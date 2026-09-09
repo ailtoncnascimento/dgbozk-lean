@@ -22,6 +22,8 @@ import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
 import Mathlib.Data.Real.Basic
 
+set_option autoImplicit false
+
 namespace DGBOZK
 
 /-! ## §1.5  The two smoothing deficits, `(eq:deficits)` and `(eq:measure)` -/
@@ -224,8 +226,9 @@ theorem aMinus_nu_two {α : ℝ} : aMinus α (nu α) 2 = S0 α := by
 theorem bMinus_nu_two {α : ℝ} : bMinus α (nu α) 2 = 1 / 2 := by
   unfold bMinus aMinus Eminus nu; ring
 
-/-- The focusing exponents are at most one on `1 ≤ α`, which is why the strict
-normal-form condition `s > 1` is the binding one. -/
+/-- The common focusing exponent is at most one when `1 ≤ α`.
+This supplies scalar room below the intermediate exponent `τ > 1` in the
+cleaned direct-transition argument. -/
 theorem S0_le_one {α : ℝ} (h : 1 ≤ α) : S0 α ≤ 1 := by unfold S0; linarith
 
 /-! ## §1.5  The main thresholds and the comparison with Ribaud–Vento -/
@@ -359,6 +362,5 @@ margin. -/
 theorem algebra_margin_on_range {α : ℝ} (h₁ : 1 ≤ α) (h₂ : α < 4 / 3) :
     dAniso α / 2 < rPlus α :=
   algebra_margin (by linarith) (by linarith)
-
 
 end DGBOZK

@@ -35,6 +35,8 @@ import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
 
+set_option autoImplicit false
+
 namespace DGBOZK
 
 open Real
@@ -166,14 +168,14 @@ theorem velX_defocusing_pos (hξ : 0 < ξ) (hα : 1 ≤ α) : 0 < velX α 1 ξ �
 /-! ### Defocusing: the Hessian fold `Γ⁺_α = {2η² = α(α+1)|ξ|^α}` -/
 
 /-- The vanishing locus of `det D²ω_+` is exactly `Γ⁺_α`. -/
-theorem hessDet_defocusing_eq_zero_iff (hξ : 0 < ξ) :
+theorem hessDet_defocusing_eq_zero_iff (_hξ : 0 < ξ) :
     hessDet α 1 ξ η = 0 ↔ 2 * η ^ 2 = α * (α + 1) * ξ ^ α := by
   rw [hessDet_defocusing]
   constructor <;> intro h <;> linarith
 
 /-- On `Γ⁺_α` one has `|ξ|^α ∼ η² ∼ ρ_α`, the statement used in the proof of
 `prop:exchange` to conclude that `Γ⁺_α ∩ 𝒜_H` traverses the corner block. -/
-theorem gamma_plus_balanced (hξ : 0 < ξ) (hα : 1 ≤ α)
+theorem gamma_plus_balanced (hξ : 0 < ξ) (_hα : 1 ≤ α)
     (hΓ : 2 * η ^ 2 = α * (α + 1) * ξ ^ α) :
     η ^ 2 = (α * (α + 1) / 2) * ξ ^ α ∧
     rho α ξ η = (1 + α * (α + 1) / 2) * ξ ^ α := by
@@ -225,7 +227,7 @@ theorem hessDet_focusing_comparable (hξ : 0 < ξ) (hα : 1 ≤ α) :
 
 /-- The vanishing locus of the focusing longitudinal velocity is exactly
 `Γ⁻_α`. -/
-theorem velX_focusing_eq_zero_iff (hξ : 0 < ξ) :
+theorem velX_focusing_eq_zero_iff (_hξ : 0 < ξ) :
     velX α (-1) ξ η = 0 ↔ η ^ 2 = (α + 1) * ξ ^ α := by
   rw [velX_focusing]
   constructor <;> intro h <;> linarith

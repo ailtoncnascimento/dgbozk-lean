@@ -42,6 +42,8 @@ coming out of `4t²ξ²/(2tξ³)` and `3·4t²ξ²/(2tξ⁴)` respectively.
 -/
 import DGBOZK.Phase
 
+set_option autoImplicit false
+
 namespace DGBOZK
 
 open Real
@@ -163,7 +165,7 @@ theorem Psi3_terms_same_sign (hξ : 0 < ξ) (ht : 0 < t) (hα : 1 ≤ α) (ηs :
 and it survives at `α = 1`, where the first term of `Ψ'''` vanishes identically
 — the second term alone carries it.  This is the assertion
 `|Ψ'''(ξ)| ≳_α |t| ξ^{α−2}` whenever `η_*² ≳ ξ^α`. -/
-theorem Psi3_lower_bound (hξ : 0 < ξ) (ht : 0 < t) (hα : 1 ≤ α) {c : ℝ} (hc : 0 < c)
+theorem Psi3_lower_bound (hξ : 0 < ξ) (ht : 0 < t) (hα : 1 ≤ α) {c : ℝ} (_hc : 0 < c)
     (hy : y = -2 * t * ξ * ηs) (hηs : c * ξ ^ α ≤ ηs ^ 2) :
     6 * c * t * ξ ^ (α - 2) ≤ Psi3 α y t ξ := by
   rw [Psi3_substituted hξ (ne_of_gt ht) hy]

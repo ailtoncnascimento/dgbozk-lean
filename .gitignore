@@ -2,4 +2,4 @@
 *.olean
 *.ilean
 *.trace
-Scratch.lean
+lean-axiom-report.txt

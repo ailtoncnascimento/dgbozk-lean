@@ -10,8 +10,9 @@ Formalizes the quantitative content of `Lemma lem:velocity` in
    `|ζ| ∼ N`, the order `N^α` is attained when `|ξ| ∼ N` and `η = 0` and is
    therefore sharp."
 
-This is the estimate that produces the focusing deficit `ν_α = 1 − α/2`, so its
-exponent is load-bearing for the threshold `s > 1`.
+This is the estimate that produces the focusing deficit `ν_α = 1 − α/2`.
+In the cleaned manuscript it contributes to the direct transition estimate
+and hence to the threshold `s > 3/2 − α/4`.
 
 ## The structure of the proof, and where `α ≤ 2` enters
 
@@ -33,6 +34,8 @@ Everything below is proved outright, on the half-plane `ξ > 0`, with the
 explicit constant `1`.
 -/
 import DGBOZK.Phase
+
+set_option autoImplicit false
 
 namespace DGBOZK
 
@@ -64,7 +67,7 @@ theorem sq_rpow_half (hξ : 0 < ξ) (α : ℝ) : (ξ ^ (α/2)) ^ (2:ℕ) = ξ ^ 
 /-- **The dichotomy of `lem:velocity`.**  Either the focusing longitudinal
 velocity is elliptic at the scale `ξ^α`, or one is in the transition region and
 `η²` is comparable to `ξ^α`. -/
-theorem velocity_dichotomy (hξ : 0 < ξ) (α η : ℝ) :
+theorem velocity_dichotomy (_hξ : 0 < ξ) (α η : ℝ) :
     (α + 1) / 2 * ξ ^ α ≤ |velX α (-1) ξ η| ∨ (α + 1) / 2 * ξ ^ α ≤ η ^ 2 := by
   rw [velX_focusing]
   by_cases h : (α + 1) / 2 * ξ ^ α ≤ |η ^ 2 - (α + 1) * ξ ^ α|

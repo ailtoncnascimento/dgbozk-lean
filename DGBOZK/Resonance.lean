@@ -46,6 +46,8 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Positivity
 
+set_option autoImplicit false
+
 namespace DGBOZK.Resonance
 
 open Real
@@ -135,7 +137,7 @@ theorem low_phase_bound {δ ωθ : ℝ} (hN : 0 < N) (hK : 0 < K) (hδ : 0 ≤ �
 
 /-- **Third error term (transverse Hessian).**  `N b² ≤ d · N^{1+α/2}|b|`,
 directly from `|b| ≤ d N^{α/2}`. -/
-theorem transverse_term_bound (hN : 0 < N) (hd : 0 ≤ d)
+theorem transverse_term_bound (hN : 0 < N) (_hd : 0 ≤ d)
     (hlow : |b| ≤ d * N ^ (α/2)) :
     N * b ^ 2 ≤ d * (N ^ (1 + α/2) * |b|) := by
   have hNh : (0:ℝ) < N ^ (α/2) := Real.rpow_pos_of_pos hN _
@@ -153,7 +155,7 @@ theorem transverse_term_bound (hN : 0 < N) (hd : 0 ≤ d)
 Note the two hypotheses: the normal sector supplies `N^{α/2}|a||b| ≤ K⁻¹N|b|²`,
 and only then does `|b| ≤ dN^{α/2}` convert `N|b|²` into `dN^{1+α/2}|b|`.  The
 paper attributes this step to the normal sector alone. -/
-theorem middle_term_bound (hN : 0 < N) (hK : 0 < K) (hd : 0 ≤ d)
+theorem middle_term_bound (hN : 0 < N) (hK : 0 < K) (_hd : 0 ≤ d)
     (hsector : |a| ≤ K⁻¹ * N ^ (1 - α/2) * |b|)
     (hlow : |b| ≤ d * N ^ (α/2)) :
     N ^ (α/2) * (|a| * |b|) ≤ (d / K) * (N ^ (1 + α/2) * |b|) := by
@@ -178,7 +180,7 @@ theorem middle_term_bound (hN : 0 < N) (hK : 0 < K) (hd : 0 ≤ d)
 
 /-- **Fifth error term (longitudinal Hessian).**  `N^{α−1}a² ≤ K⁻¹N^{α/2}|a||b|`,
 so it is dominated by the middle term, as the paper says. -/
-theorem longitudinal_hessian_bound (hN : 0 < N) (hK : 0 < K)
+theorem longitudinal_hessian_bound (hN : 0 < N) (_hK : 0 < K)
     (hsector : |a| ≤ K⁻¹ * N ^ (1 - α/2) * |b|) :
     N ^ (α - 1) * a ^ 2 ≤ K⁻¹ * (N ^ (α/2) * (|a| * |b|)) := by
   have hNl : (0:ℝ) < N ^ (α - 1) := Real.rpow_pos_of_pos hN _
@@ -212,7 +214,7 @@ i.e. `(eq:resonance)` with the explicit constant `c₁ = 1/2`.
 The principal term is `∂_ηω_-(ζ)·b`, of size at least `N^{1+α/2}|b|` on the
 transition band, where `|∂_ηω_-(ζ)| = 2|ξη| ∼ N^{1+α/2}`. -/
 theorem resonance_lower_bound {c₀ δ Ω ωθ vξ vη R : ℝ}
-    (hN : 0 < N) (hK : 0 < K) (hK1 : 1 ≤ K) (hc₀ : 0 ≤ c₀) (hδ : 0 ≤ δ) (hd : 0 ≤ d)
+    (hN : 0 < N) (hK : 0 < K) (_hK1 : 1 ≤ K) (hc₀ : 0 ≤ c₀) (hδ : 0 ≤ δ) (hd : 0 ≤ d)
     -- `[BB-TAYLOR]` : (eq:Omega-taylor)
     (hTaylor : Ω = ωθ - vξ * a - vη * b - R)
     -- principal term: `|∂_ηω_-(ζ)| ≳ N^{1+α/2}` on the band `𝒯_N`

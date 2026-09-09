@@ -22,5 +22,5 @@ echo "==> [4/4] Building DGBOZK"
 lake build
 
 echo
-echo "Setup complete. Now run the honesty check:"
-echo "    lake env lean DGBOZK/Audit.lean"
+echo "Setup complete. Now run the full local verification:"
+echo "    bash scripts/verify.sh"

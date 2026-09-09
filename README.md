@@ -1,218 +1,122 @@
 # dgbozk-lean
 
-**Status:** builds clean on Lean 4.22.0 + Mathlib. 104 theorems, 39 definitions,
-~1900 lines. **No `sorry`, no project axioms.** Every headline theorem depends
-only on `propext`, `Classical.choice`, `Quot.sound`; the results in
-`Cancellation.lean` do not even need `Classical.choice`.
+Targeted Lean 4 checks accompanying A. C. Nascimento, Local well-posedness for
+two-sign dispersion-generalized Benjamin--Ono--Zakharov--Kuznetsov equations.
 
----
+The current validation target is the cleaned manuscript whose SHA-256 is
 
-A **conditional** Lean 4 formalization of the key calculations in
+    9a0920d31a4ce57d8d78dc046b727ac27b892ae8fbe4c82de60b0b70c7e2b1a0
 
-> A. C. Nascimento, *Local well-posedness for two-sign dispersion-generalized
-> Benjamin–Ono–Zakharov–Kuznetsov equations.*
+The project is pinned to Lean 4.22.0 and Mathlib 4.22.0.
 
-for the Cauchy problem
+## Exact scope
 
-```
-∂_t u − σ D_x^α ∂_x u + ∂_x ∂_y² u + u ∂_x u = 0,   (x,y) ∈ ℝ², 1 ≤ α < 2, σ = ±1.
-```
+This repository is not an article-level formal verification and does not prove
+the local-well-posedness theorem.  The default DGBOZK target machine-checks:
 
-## What this repository claims — and what it does not
+1. the exponent, scaling, and defocusing threshold arithmetic;
+2. selected algebraic consequences of the displayed phase and fold formulas;
+3. the scalar focusing velocity bound;
+4. the polynomial sign identity behind the localized cubic cancellation;
+5. the defocusing parameter choices and scalar small-data bootstrap;
+6. the cleaned focusing threshold
 
-It follows the strategy Terence Tao has described for using proof assistants on
-research papers: **formalize a key calculation conditionally on accepting every
-other cited lemma as a black box.** This raises confidence in a paper when the
-black boxes are all *standard* but the key calculation is *sensitive to sign and
-exponent errors*.
+       s_minus(alpha) = 3/2 - alpha/4 = (6-alpha)/4,
 
-So this repository does **not** verify the paper. It verifies:
+   its endpoint values, and the existence of the intermediate exponents used
+   after the direct transition estimate; and
+7. the final scalar absorption implication for a quadratic frequency-envelope
+   system.
 
-1. **every numerical exponent** the paper's thresholds depend on, uniformly in
-   `α` rather than at sample values;
-2. **the sign-dependent phase geometry** that organizes the whole argument;
-3. **the algebra of the localized cubic cancellation**, which the paper itself
-   flags as the step whose omission "gives a false proof";
-4. **the exponent bookkeeping of the focusing resonance lower bound**;
-5. **that the parameter choices in the a priori system are consistent**, and
-   that the small-data bootstrap closes,
+The source contains no sorry, admit, or project-level axiom declaration.
+Audit.lean prints the axiom dependencies of the headline results.
 
-conditionally on the standard machinery listed in
-[`DGBOZK/BlackBoxes.lean`](DGBOZK/BlackBoxes.lean) — stationary phase, `TT*`,
-Coifman–Meyer, sharp Gårding, Bernstein, compactness, Bona–Smith.
+## What remains outside Lean
 
-Every black box is carried **as a hypothesis or as a definition, never as an
-axiom**. `#print axioms` on each headline theorem returns only Lean's own
-`propext`, `Classical.choice`, `Quot.sound`. See
-[`DGBOZK/Audit.lean`](DGBOZK/Audit.lean).
+Successful compilation does not validate the analytic heart of the article.
+The following remain unformalized:
 
-## Findings
+- the full anisotropic Littlewood--Paley theory;
+- oscillatory-integral and van der Corput estimates;
+- TT-star and mixed maximal-function estimates;
+- bilinear multiplier and weighted paraproduct estimates;
+- the positive-commutator and direct focusing transition estimates, including
+  the terms containing derivatives of the weight;
+- sharp Garding and coercivity;
+- refined short-time Strichartz and microlocal smoothing;
+- the frequency-resolved nonlinear energy inequality itself;
+- construction, compactness, uniqueness, frequency-envelope propagation, and
+  Bona--Smith continuity; and
+- a Lean theorem whose conclusion is the manuscript's main theorem.
 
-Two things surfaced that the paper should address. Both are recorded as
-machine-checked statements, not as prose.
+BlackBoxes.lean records this boundary in the source.
 
-### 1. The sign of the principal term in the localized cancellation (§5)
+## Manuscript-aligned focusing check
 
-`(eq:cancellation-computation)` displays the derivative of the cubic correction
-along the transverse flow as
+FocusingThreshold.lean formalizes the exact scalar logic:
 
-```
-… = +2 H⁻¹ ∫ b Π_H(∂_y v, ∂_y z_{∼H}) ∂_x z_H  +  𝒩
-```
+- s_minus(alpha) = 3/2 - alpha/4;
+- s_minus(1) = 5/4 and s_minus(2) = 1;
+- the direct commutator exponent condition is equivalent to
 
-and concludes that this "is exactly the negative of (eq:bad-sm), so the two
-cancel identically".
+      tau <= s - 1/2 + alpha/4;
 
-`DGBOZK.Cancellation.transverse_flow_identity` proves the identity that actually
-holds. Its principal coefficient is **`−2`, not `+2`**. Two independent
-derivations agree:
+- an exponent tau with 1 < tau below that ceiling exists if and only if
+  s_minus(alpha) < s; and
+- for 1 <= alpha < 2 this supplies the positive slack required by the refined
+  estimate's scalar exponent bookkeeping.
 
-* on the Fourier side, `−∂_x∂_y²` acting on the `j`-th factor has symbol
-  `−(i a_j)(i b_j)²`, every term carries exactly three derivative factors, and
-  under `Σ a_j = Σ b_j = 0` one gets
-  `a₁b₁² + a₂b₂² + a₃b₃² = 2a₃b₁b₂ − a₁b₂² − a₂b₁²`, which after the uniform
-  factor `i³ = −i` gives coefficient `−2` in operator form;
-* directly, integrating by parts twice in `y` in the third term and expanding
-  `∂_y²Π(v,z) = Π(∂_y²v,z) + 2Π(∂_yv,∂_yz) + Π(v,∂_y²z)` produces
-  `−2 ∫ b Π(∂_yv,∂_yz)∂_x z`.
+These theorems do not prove the direct commutator estimate.  They verify only
+what follows arithmetically once that analytic estimate is established.
 
-As displayed, the correction would *double* the bad term instead of cancelling
-it. `paper_identity_forces` states the consequence precisely: assuming the
-paper's `+2` forces `4·T1 = T2 + T3 − 𝒩`, i.e. the principal term would have to
-be a remainder term.
+EnergyEnvelope.lean similarly proves only
 
-**This is repairable and does not affect any stated theorem.** Flipping the sign
-of the cubic correction in `(eq:localized-functional)` — equivalently absorbing
-`−1` into the normalization of `Π_H`, a freedom the paper explicitly invokes
-when it says `Π_H` is "normalized so as to correspond to writing
-`−uu_x = −½∂_x(u²)`" — restores exact cancellation. See
-`transverse_flow_identity_negated`.
+    Z <= C0 + Theta C_beta Z,   Theta C_beta <= 1/2,   0 <= Z
+    implies
+    Z <= 2 C0.
 
-### 2. An unlisted residual term (§5)
+It does not prove the frequency-resolved nonlinear inequality that supplies the
+first line.
 
-The same expansion produces, unconditionally, a term with symbol `−a₂b₁²`, i.e.
+## Legacy material
 
-```
-Π_H(∂_y² P^ρ_{≪H}u, ∂_x z_{∼H}) z_H .
-```
+Resonance.lean is retained for historical comparison with an earlier
+normal-form draft.  It is deliberately not imported by the default target and
+is not part of the validation claim for the cleaned manuscript.
 
-Its two `∂_y` fall on the low factor and its `∂_x` on a different factor, so it
-matches neither clause of the paper's description of `𝒩` ("at least one `∂_y`
-and the `∂_x` act on the same frequency-localized factor … the `∂_x` has been
-moved onto `b`"), and it is not among the terms estimated in the proof. The
-companion term `−a₁b₂²` **is** listed, as the "Taylor-remainder term".
+The Foundations directory contains preliminary Fourier-convention work.  It is
+not yet an anisotropic Littlewood--Paley formalization and is not imported by
+the default target.
 
-`residual_term_unlisted` shows the identity fails without it, and `T3_ne_zero`
-shows it does not vanish identically. It appears to be a bookkeeping omission
-rather than a gap — putting `∂_y²P^ρ_{H'}u` in `L^∞` costs `H'` and the
-resulting factor `(H'/H)^{1−1/α}` sums over `H' ≪ H` for `α > 1`, with the `H^ε`
-absorbing the borderline case `α = 1` — but the term should be displayed and
-estimated.
+## Reproducible verification
 
-### 3. A step with two hypotheses attributed to one (§6)
+From a clean clone in a GitHub Codespace:
 
-In the proof of `lem:resonance` the middle Hessian term is dispatched with
-"`N^{α/2}|a||b| ≤ (1/K)N^{1+α/2}|b|` **directly from (eq:normal-sector)**". The
-normal sector alone gives `N^{α/2}|a||b| ≤ K⁻¹N|b|²`; converting that to
-`K⁻¹N^{1+α/2}|b|` additionally uses `|b| ≤ N^{α/2}`, which comes from the
-low-frequency hypothesis `ρ_α(θ) ≤ δN^α`. The step is correct.
-`Resonance.middle_term_bound` requires both hypotheses explicitly.
+    cd /workspaces/dgbozk-lean
+    cat lean-toolchain
+    grep -n 'inputRev\|"rev"\|"name": "mathlib"' lake-manifest.json
+    bash scripts/setup.sh
+    bash scripts/verify.sh
+    lake env lean --version
+    git -C .lake/packages/mathlib rev-parse HEAD
 
-### Everything else checked out
+The expected toolchain is leanprover/lean4:v4.22.0.  The pinned Mathlib commit
+is 79e94a093aff4a60fb1b1f92d9681e407124c2ca.
 
-In particular all of the following are confirmed exactly as printed, uniformly
-in `α`:
+Before citing the artifact, push the exact commit, require the workflow to pass,
+and record:
 
-| Paper | Lean |
-|---|---|
-| `det D²ω_+ = 2α(α+1)\|ξ\|^α − 4η²`, `det D²ω_- = −2α(α+1)\|ξ\|^α − 4η²` | `hessDet_defocusing`, `hessDet_focusing`, `hessDet_eq_det` |
-| Exchange of degeneracies (`prop:exchange`) | `exchange_of_degeneracies` |
-| `Ψ'' = (t/2ξ)·det D²ω_+(ξ,η_*)` | `Psi2_eq_hessDet` |
-| `Ψ'''\|_{Γ⁺} = tα(α+1)(α+2)ξ^{α−2}` | `Psi3_on_gamma_plus` |
-| `\|∇ω_-\| ≳ N^α`, sharp at `η = 0` | `velocity_lower_bound`, `velocity_sharp` |
-| `p*_α = 4(α+1)/(α+2)`, `p*_1 = 8/3`, `p*_2 = 3` | `Eplus_pStar`, `pStar_one`, `pStar_two` |
-| `a⁺_{δ_α}(2) = (3−α)/(2α)`, `a⁺_{δ_α}(12/5) = 3(4−α)/(8α)` | `aPlus_delta_two`, `aPlus_delta_twelveFifths` |
-| `𝖱_{α,1} − 𝖱_{α,0} = 1/8` | `R1_sub_R0` |
-| `𝖱_{α,1} − 𝖪_α = 5(2−α)/(24α) > 0` | `R1_sub_Kfold`, `Kfold_lt_R1` |
-| `a⁻_{ν_α}(2) = (3−α)/2`, `b⁻_{ν_α}(2) = 1/2` | `aMinus_nu_two`, `bMinus_nu_two` |
-| `r⁺_α − r̃_α = (3α−4)/(8α)`, improvement on `1 ≤ α < 4/3` | `rPlus_sub_rRV`, `rPlus_lt_rRV` |
-| `9/8` against `5/4` at `α = 1` | `rPlus_one`, `rRV_one` |
-| `r⁺_α < 1/2` iff `α > 12/7` | `rPlus_lt_half_iff` |
-| `κ_α − 1/4 = (α+1)/(12α)` | `kappa_sub_quarter` |
-| `r_c = 1/(2α) − 3/4` is the scaling-critical index | `scalingExp_rCrit` |
-| lifespan exponent `4(α+1)/(3α−2)`, `= 8` at `α = 1` | `lifespanExp_eq`, `lifespanExp_one` |
-| bootstrap `X ≤ C₀e₀ + C₁(X^{3/2}+X²+X^{5/2})` closes | `bootstrap_closure` |
-| the `ε₀` of `prop:coupled` exists, both signs | `exists_eps_defocusing`, `exists_eps_focusing` |
+    git rev-parse HEAD
+    git status --short
 
-One margin worth noting even though it is satisfied: `prop:ell-smoothing`
-needs `τ > d_α/2`, and `τ` may be taken just above `r⁺_α`, so one needs
-`r⁺_α > d_α/2`, i.e. `α < 8/5` (`algebra_margin`). The defocusing range
-`α < 4/3` is inside it, but the margin closes at `8/5`, not at `2` — worth
-recording if the range is ever pushed.
+The status output must be empty, and the successful workflow run must display
+the same commit SHA.
 
-## Layout
+## Suggested disclosure
 
-| File | Contents |
-|---|---|
-| `DGBOZK/BlackBoxes.lean` | what is assumed, and why each assumption is standard |
-| `DGBOZK/Exponents.lean` | §1.5–1.6, all exponent arithmetic — **no black boxes** |
-| `DGBOZK/Phase.lean` | §3, `(eq:grad-ell)`, `(eq:grad-hyp)`, `prop:exchange` |
-| `DGBOZK/Fold.lean` | §3, `lem:fold` — reduced-phase identities |
-| `DGBOZK/Velocity.lean` | §3, `lem:velocity` — focusing group velocity |
-| `DGBOZK/Resonance.lean` | §6, `lem:resonance` — resonance lower bound |
-| `DGBOZK/Cancellation.lean` | §5, `lem:localized-cancellation` — the cubic cancellation |
-| `DGBOZK/Bootstrap.lean` | §8–§9, parameter consistency and small-data closure |
-| `DGBOZK/Audit.lean` | `#print axioms` on every headline theorem |
+Selected sign-, polynomial-, and exponent-sensitive calculations were checked
+in Lean 4.  The artifact does not formalize the harmonic-analysis estimates or
+the local-well-posedness theorem; those arguments remain subject to conventional
+mathematical review.
 
-## Building
-
-### In a GitHub Codespace (no local install)
-
-Open this repository in a Codespace. `.devcontainer/devcontainer.json` installs
-the Lean 4 VS Code extension and runs `scripts/setup.sh`, which installs `elan`,
-fetches prebuilt Mathlib and builds the project. If you would rather drive it by
-hand, open a terminal and run:
-
-```bash
-bash scripts/setup.sh
-```
-
-Then the honesty check:
-
-```bash
-lake env lean DGBOZK/Audit.lean
-```
-
-### Locally
-
-```bash
-curl -sSfL https://elan.lean-lang.org/elan-init.sh | sh -s -- -y
-lake exe cache get      # prebuilt Mathlib, ~5 GB
-lake build
-lake env lean DGBOZK/Audit.lean
-```
-
-`lean-toolchain` pins Lean to `v4.22.0`; `lake-manifest.json` pins Mathlib to
-the `v4.22.0` release commit, so `lake exe cache get` always has a cache to hit.
-
-**Do not skip `lake exe cache get`.** Without it, `lake build` compiles Mathlib
-from source — hours on a small machine.
-
-### Optional exercise
-
-`DGBOZK/Optional/Differentiation.lean` is unverified starter code for
-discharging `[BB-DIFF]`. It is deliberately not imported by `DGBOZK.lean`, so it
-takes no part in `lake build` and cannot break the verified core.
-
-## Citing
-
-If this formalization is referenced in the paper, the natural sentence is:
-
-> The sign-dependent phase geometry of §3, the exponent arithmetic of §1.6, the
-> algebraic core of the cancellation of §5, and the parameter consistency of §8
-> have been formalized in Lean 4, conditionally on the standard harmonic
-> analysis inputs, at `github.com/<user>/dgbozk-lean`.
-
-## License
-
-Apache 2.0.
+Apache-2.0 license.

@@ -1,5 +1,5 @@
 /-
-# DGBOZK — a conditional Lean 4 validation of the key calculations
+# DGBOZK — targeted Lean 4 checks for the cleaned manuscript
 
 Companion formalization for
 
@@ -7,13 +7,17 @@ Companion formalization for
   Benjamin–Ono–Zakharov–Kuznetsov equations*.
 
 See `README.md` for the scope of the claim and `DGBOZK/BlackBoxes.lean` for the
-list of black boxes.
+trust boundary.  This default target deliberately excludes the legacy
+normal-form resonance module and the unfinished Fourier-foundation modules.
 -/
 import DGBOZK.BlackBoxes
 import DGBOZK.Exponents
 import DGBOZK.Phase
 import DGBOZK.Fold
 import DGBOZK.Velocity
-import DGBOZK.Resonance
 import DGBOZK.Cancellation
+import DGBOZK.FocusingThreshold
+import DGBOZK.EnergyEnvelope
 import DGBOZK.Bootstrap
+
+set_option autoImplicit false

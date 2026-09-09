@@ -13,10 +13,8 @@ The paper's own commentary is that this is the step which cannot be omitted:
    cancellation.  They are included because omitting the last one gives a false
    proof of (5.13)."
 
-and
-
-  "The displayed principal term of (5.29) is exactly the negative of (5.28), so
-   the two cancel identically, with no error and no denominator."
+and, of the principal term, that it "is exactly the negative of (eq:bad-sm), so
+the two cancel identically, with no error and no denominator."
 
 That is a claim about a **sign**, asserted with no room to spare, and it is
 therefore exactly the kind of key calculation Tao's conditional-formalization
@@ -48,25 +46,40 @@ is uniform and the identity below is a polynomial identity valid over any
 commutative ring containing the imaginary unit — no property of `i` is used, and
 `ring` discharges it.
 
-## The finding
+## What this file established, and how the manuscript uses it
 
-The identity that actually holds carries the principal term with coefficient
-**`−2`**, not `+2` as displayed in `(eq:cancellation-computation)`.  See
-`transverse_flow_identity` and the discussion in `paper_identity_forces` below.
-The discrepancy is a factor `−1` and is traceable to the `i³ = −i` bookkeeping;
-it is repaired by flipping the sign of the cubic correction in
-`(eq:localized-functional)` (equivalently, by the normalization of `Π_H`, a
-freedom the paper explicitly invokes).  With that flip the cancellation is exact
-and everything downstream is unaffected.
+`transverse_flow_identity` proves that the transverse flow derivative of the
+cubic correction, taken with a **`+`** sign in `(eq:localized-functional)`,
+carries the principal term with coefficient **`−2`**: it would *reinforce* the
+bad term `(eq:bad-sm)` rather than cancel it.  `transverse_flow_identity_negated`
+gives the same computation for the correction taken with a **`−`** sign, where
+the principal coefficient is `+2` and the cancellation is exact.
 
-A second, independent hand derivation agrees: integrating by parts twice in `y`
-in the third term of `(eq:cancellation-computation)` and expanding
-`∂_y²Π(v,z) = Π(∂_y²v,z) + 2Π(∂_yv,∂_yz) + Π(v,∂_y²z)` produces
+An earlier draft of the manuscript displayed the `+` correction together with a
+`+2` principal term, which is inconsistent; `paper_identity_forces` records
+precisely what that combination would entail.  **The current manuscript carries
+the minus sign in `(eq:localized-functional)`**, so it is
+`transverse_flow_identity_negated` that corresponds to the published identity,
+and `T2`/`T3` below are its `𝒯⁽²⁾` and `𝒯⁽³⁾`.
+
+Note one thing this file does *not* settle, and which the manuscript establishes
+separately: the computation here takes the weight `b` constant, so it says
+nothing about the terms carrying `b'`.  In the manuscript those are collected as
+`ℬ^lin`, and the Leibniz cross term `2Π(∂_yv,∂_yz')` produced by the two
+`y`-integrations by parts cancels against the `b'` term generated when the
+principal term is integrated by parts in `x`.  That cancellation is genuine but
+is outside the scope of the symbol calculus used here.
+
+A second, independent hand derivation of the `+`-sign case agrees with
+`transverse_flow_identity`: integrating by parts twice in `y` in the third term
+and expanding `∂_y²Π(v,z) = Π(∂_y²v,z) + 2Π(∂_yv,∂_yz) + Π(v,∂_y²z)` produces
 `−2 ∫ b Π(∂_yv,∂_yz)∂_x z` directly.
 -/
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Algebra.Order.Field.Basic
+
+set_option autoImplicit false
 
 namespace DGBOZK.Cancellation
 
@@ -95,9 +108,9 @@ def T1 (I b₁ b₂ a₃ : R) : R := (I * b₁) * (I * b₂) * (I * a₃)
 `T^{1/2}𝒜⁺(ℰ⁺)²`. -/
 def T2 (I a₁ b₂ : R) : R := (I * a₁) * (I * b₂) ^ 2
 
-/-- Symbol of `Π(∂_y² v, ∂_x z_{∼H}) · z_H`.  This term is produced by the same
-expansion but is **not** among the remainder terms the paper lists; see
-`residual_term_unlisted` below. -/
+/-- Symbol of `Π(∂_y² v, ∂_x z_{∼H}) · z_H` — the manuscript's `𝒯⁽³⁾`.  It is
+produced by the same expansion as `T2`, and an earlier draft omitted it from the
+list of remainders; see `residual_term_unlisted` below. -/
 def T3 (I b₁ a₂ : R) : R := (I * b₁) ^ 2 * (I * a₂)
 
 /-! ## The exact identity -/
@@ -127,8 +140,9 @@ along the transverse flow equals
   `(−2)·Π(∂_y v, ∂_y z_{∼H})∂_x z_H  +  Π(∂_x v, ∂_y² z_{∼H})z_H
      +  Π(∂_y² v, ∂_x z_{∼H})z_H`.
 
-The coefficient of the principal term is **`−2`**.  The paper's
-`(eq:cancellation-computation)` displays `+2`.
+The coefficient of the principal term is **`−2`**.  This is why the manuscript
+carries a **minus** sign on the cubic correction in `(eq:localized-functional)`;
+see `transverse_flow_identity_negated`, which is the form it uses.
 
 No property of `I` is used: the identity is polynomial in `I`.  The sign flip
 relative to `flow_symbol_identity` is exactly the uniform factor `i³ = −i`
@@ -150,10 +164,10 @@ The next two statements pin down what the discrepancy means, without overstating
 it.
 -/
 
-/-- **What the paper's displayed identity would force.**  Suppose the transverse
-flow derivative equals `+2·T1 + N` for some remainder `N`, as displayed in
-`(eq:cancellation-computation)`.  Comparing with `transverse_flow_identity`
-forces
+/-- **What the inconsistent combination would force.**  Suppose the transverse
+flow derivative of the `+`-sign correction equals `+2·T1 + N` for some remainder
+`N`, as an earlier draft of `(eq:cancellation-computation)` displayed.  Comparing
+with `transverse_flow_identity` forces
 
   `4·T1 = T2 + T3 − N`,
 
@@ -181,12 +195,16 @@ theorem T1_ne_zero {K : Type*} [Field K] (I b₁ b₂ a₃ : K)
   exact mul_ne_zero (mul_ne_zero (mul_ne_zero hI h₁) (mul_ne_zero hI h₂))
     (mul_ne_zero hI h₃)
 
-/-- **The repair.**  If the cubic correction in `(eq:localized-functional)` is
-taken with the opposite sign — equivalently if `Π_H` is normalized with an extra
-factor `−1`, a freedom the paper explicitly invokes when it says `Π_H` is
-"normalized so as to correspond to writing `−uu_x = −½∂_x(u²)`" — then the
-principal term appears with coefficient `+2` and cancels `(eq:bad-sm)` exactly,
-as claimed.  Formally: negating the whole identity turns `−2` into `+2`. -/
+/-- **The identity the manuscript uses.**  With the cubic correction in
+`(eq:localized-functional)` taken with a minus sign, the principal term appears
+with coefficient `+2` and cancels `(eq:bad-sm)` exactly.
+
+Note that renormalizing `Π_H` by `−1` would *not* achieve this: the symbol
+`e_{3,H}` is fixed by the Littlewood--Paley expansion `(eq:LP-Taylor)` and
+appears in `(eq:bad-sm)` as well as in the correction, so flipping it flips both
+and leaves their relative sign unchanged.  The explicit sign in
+`(eq:localized-functional)` is the only available repair — this is
+`rem:correction-sign` of the manuscript. -/
 theorem transverse_flow_identity_negated (I a₁ a₂ a₃ b₁ b₂ b₃ : R)
     (ha : a₁ + a₂ + a₃ = 0) (hb : b₁ + b₂ + b₃ = 0) :
     -(Lsym I a₁ b₁ + Lsym I a₂ b₂ + Lsym I a₃ b₃)

@@ -5,18 +5,22 @@ The point of a conditional formalization is that the reader can see exactly what
 was assumed.  This file prints the axiom dependencies of every headline result
 in the library.
 
-Expected output for **all** of them:
+Each result must depend on at most the standard allowlist
+`propext`, `Classical.choice`, `Quot.sound`; many algebraic results use a strict
+subset or no axioms at all.  This file is a human-readable report.  Printing the
+dependencies does not by itself make CI fail, so the GitHub workflow also runs
+the enforced axiom audit supplied by `leanprover/lean-action` and an independent
+`nanoda` check with `sorryAx` forbidden.
 
-  'theorem' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-that is, only the three axioms of Lean's own logic — no `sorry`, and no
-project-specific axiom.  The black boxes of `DGBOZK/BlackBoxes.lean` are carried
-as *hypotheses* or as *definitions*, never as axioms, so they are visible in the
-statements rather than hidden in the trusted base.
+Hypotheses such as `hTaylor` and `hR` are inputs to theorem statements, not
+axioms, and therefore do not appear in `#print axioms`.  Their mathematical
+strength must be assessed by reading the statement as part of the scope audit.
 
 Run with `lake env lean DGBOZK/Audit.lean`.
 -/
 import DGBOZK
+
+set_option autoImplicit false
 
 open DGBOZK
 
@@ -55,19 +59,22 @@ open DGBOZK
 #print axioms DGBOZK.scalingExp_rCrit
 #print axioms DGBOZK.algebra_margin_on_range
 
+/-! ## Cleaned focusing theorem: scalar threshold arithmetic -/
+#print axioms DGBOZK.sMinus_eq
+#print axioms DGBOZK.sMinus_strictAnti
+#print axioms DGBOZK.direct_commutator_gap_iff
+#print axioms DGBOZK.exists_admissible_tau_iff
+#print axioms DGBOZK.focusing_parameter_package
+
 /-! ## §5  The localized cubic cancellation -/
 #print axioms DGBOZK.Cancellation.flow_symbol_identity
 #print axioms DGBOZK.Cancellation.transverse_flow_identity
 #print axioms DGBOZK.Cancellation.paper_identity_forces
 #print axioms DGBOZK.Cancellation.residual_term_unlisted
 
-/-! ## §6  The focusing resonance -/
-#print axioms DGBOZK.Resonance.resonance_lower_bound
-#print axioms DGBOZK.Resonance.middle_term_bound
-
 /-! ## §8–§9  Closure -/
 #print axioms DGBOZK.bootstrap_closure
 #print axioms DGBOZK.exists_eps_defocusing
-#print axioms DGBOZK.exists_eps_focusing
 #print axioms DGBOZK.coupled_admissible_defocusing
-#print axioms DGBOZK.coupled_admissible_focusing
+#print axioms DGBOZK.quadratic_envelope_closure
+#print axioms DGBOZK.envelope_decay_margin
