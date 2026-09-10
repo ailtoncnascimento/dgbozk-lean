@@ -78,3 +78,9 @@ open DGBOZK
 #print axioms DGBOZK.coupled_admissible_defocusing
 #print axioms DGBOZK.quadratic_envelope_closure
 #print axioms DGBOZK.envelope_decay_margin
+
+/-! ## Frequency-envelope calculus -/
+#print axioms DGBOZK.FrequencyEnvelope.envelopeSq_nonneg
+#print axioms DGBOZK.FrequencyEnvelope.envelopeSq_slowVariation
+#print axioms DGBOZK.FrequencyEnvelope.sum_envelopeSq_le
+#print axioms DGBOZK.FrequencyEnvelope.finite_envelope_propagation

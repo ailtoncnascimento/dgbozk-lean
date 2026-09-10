@@ -18,6 +18,7 @@ import DGBOZK.Velocity
 import DGBOZK.Cancellation
 import DGBOZK.FocusingThreshold
 import DGBOZK.EnergyEnvelope
+import DGBOZK.FrequencyEnvelope
 import DGBOZK.Bootstrap
 
 set_option autoImplicit false
