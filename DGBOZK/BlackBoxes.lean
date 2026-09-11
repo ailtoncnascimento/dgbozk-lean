@@ -1,65 +1,105 @@
 /-
 # Trust boundary for the cleaned manuscript
 
-This library is a targeted consistency formalization.  It checks selected
-sign-sensitive, polynomial, and exponent-sensitive calculations.  It does not
-formalize or prove the local-well-posedness theorem.
+This library is a targeted consistency formalization. It checks selected
+sign-sensitive, polynomial, exponent-sensitive, and finite-dimensional
+closure arguments. It does not formalize or prove the local-well-posedness
+theorem.
 
-The current default target covers:
+The default target covers:
 
 * exact exponent and threshold arithmetic;
 * selected algebraic consequences of the displayed phase formulas;
 * the fold and velocity scalar calculations;
-* the polynomial Fourier-symbol identity behind the localized cancellation;
+* the polynomial Fourier-symbol identity behind the localized cubic
+  cancellation;
 * the scalar defocusing parameter and bootstrap calculations;
-* the focusing threshold and intermediate-parameter arithmetic in the cleaned
-  manuscript; and
-* the final scalar absorption consequence of a quadratic frequency-envelope
-  inequality.
+* the focusing threshold and intermediate-parameter arithmetic;
+* finite frequency-envelope algebra, construction of the maximizing block,
+  and passage of an envelope bound to a pointwise limit under explicit
+  convergence hypotheses;
+* exact transverse-resonance identities, sector reductions, component
+  estimates, and the final algebraic lower-bound deduction;
+* the sign-sensitive algebra in the localized positive commutator;
+* the two-component parametrix numerator and reconstruction identity; and
+* the scalar positivity and absorption consequences used after the analytic
+  estimates have been established.
 
 ## Displayed derivatives
 
-In Phase.lean and Fold.lean, several derivative formulas are definitions
-matching the manuscript.  Downstream theorems validate consequences of those
+In `Phase.lean` and `Fold.lean`, several derivative formulas are definitions
+matching the manuscript. Downstream theorems validate consequences of those
 formulas but do not prove that they are derivatives of the original phase.
 The Hessian determinant identity is proved from the displayed Hessian entries.
 
-## Multiplier model
+## Localized cubic cancellation
 
-Cancellation.lean uses a finite-dimensional symbol model.  It verifies the
-sign-sensitive polynomial identity.  It does not construct the bilinear
-multiplier, prove weighted operator bounds, justify integrations by parts, or
-control terms carrying derivatives of the weight.
+`Cancellation.lean` uses a finite-dimensional Fourier-symbol model. It checks
+the sign of the principal cubic cancellation and the presence of every
+polynomial residual term. It does not construct the bilinear multiplier,
+prove weighted operator estimates, justify integration by parts, or control
+the terms carrying derivatives of the spatial weight.
 
-## Legacy resonance file
+## Supplementary resonance files
 
-Resonance.lean is retained as a supplementary audit of an earlier normal-form
-draft.  It is not imported by the default DGBOZK target and does not validate
-the cleaned manuscript, which no longer uses that argument.  Its Taylor
-identity and Hessian remainder are explicit hypotheses, not derived results.
+The `ResonanceTransverse*` modules encode algebra from an earlier
+resonance-divisor route. The cleaned target manuscript contains no
+transverse-resonance lemma or reciprocal-resonance multiplier argument.
+These modules are retained only as supplementary experiments and are not
+imported by the default target or included in its integrated axiom audit.
+
+## Positive commutator
+
+`PositiveCommutatorCore.lean` checks:
+
+* the Fourier-symbol identity behind
+  `[partial_x partial_y^2,b] = b' partial_y^2`;
+* the two negative signs arising from
+  `- [L_+^{long},b]` with `L_+^{long}=-Op(ell)`;
+* the positive sign produced by the exact phase-difference factorization;
+* the two-component parametrix numerator and reconstruction identities;
+* nonnegativity of the principal quadratic density; and
+* the final scalar absorption step.
+
+It does not prove the Wiener-algebra estimate `eq:D-wiener`, the
+continuous-shift covering, weighted multiplier estimates, Fourier inversion
+of the error kernel, or the integrations by parts. The separate file
+`WIENER_PHASE_AUDIT.md` records the mathematical audit of these analytic
+interfaces.
+
+## Frequency envelopes
+
+The finite envelope calculation, the maximizing-block argument, and the
+order-theoretic passage of a pointwise estimate to a limit are formalized.
+
+The frequency-resolved nonlinear PDE energy inequality, existence of the
+required convergent approximation sequence, and identification of its limit
+with the constructed solution remain analytic inputs.
 
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
 
-* anisotropic Littlewood--Paley theory beyond the preliminary convention files;
+* anisotropic Littlewood--Paley theory beyond preliminary convention files;
 * oscillatory-integral and van der Corput estimates;
 * the TT-star argument and mixed maximal-function estimates;
 * bilinear multiplier and weighted paraproduct estimates;
-* the positive-commutator and direct focusing transition estimates, including
-  every term containing a derivative of the weight;
-* sharp Garding and coercivity;
+* the analytic Wiener estimates used in the positive commutator;
+* weighted positive-commutator, sharp-Garding, and coercivity estimates;
+* the direct focusing transition estimate;
 * refined short-time Strichartz and microlocal smoothing estimates;
 * the frequency-resolved nonlinear energy inequality itself;
-* construction, compactness, uniqueness, frequency-envelope propagation, and
-  Bona--Smith continuity.
+* construction and compactness of approximate solutions;
+* uniqueness and Bona--Smith continuity; and
+* all-order Marcinkiewicz estimates for reciprocal resonance symbols.
 
-FocusingThreshold.lean proves only the parameter arithmetic that follows once
-the direct transition estimate is available.  EnergyEnvelope.lean proves only
-the final scalar absorption step once the nonlinear envelope inequality has
-been established analytically.
+`FocusingThreshold.lean` proves only the parameter arithmetic that follows
+once the direct transition estimate is available. `EnergyEnvelope.lean` and
+the `FrequencyEnvelope*` modules prove the discrete and limiting closure
+steps only after the analytic block-energy system and convergence hypotheses
+have been supplied.
 
-There are no project-level axioms in this file.  Successful compilation is
+There are no project-level axioms in this file. Successful compilation is
 evidence only for the encoded declarations, never for the omitted analysis.
 -/
 

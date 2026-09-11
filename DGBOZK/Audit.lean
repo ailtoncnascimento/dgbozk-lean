@@ -84,3 +84,17 @@ open DGBOZK
 #print axioms DGBOZK.FrequencyEnvelope.envelopeSq_slowVariation
 #print axioms DGBOZK.FrequencyEnvelope.sum_envelopeSq_le
 #print axioms DGBOZK.FrequencyEnvelope.finite_envelope_propagation
+#print axioms DGBOZK.FrequencyEnvelope.finite_envelope_propagation_from_system
+
+/-! ## Frequency-envelope limiting argument -/
+#print axioms DGBOZK.FrequencyEnvelope.bound_passes_to_pointwise_limit
+#print axioms DGBOZK.FrequencyEnvelope.finite_to_limit_envelope_propagation
+
+/-! ## Localized positive-commutator algebra -/
+#print axioms DGBOZK.PositiveCommutatorCore.transverse_commutator_symbol
+#print axioms DGBOZK.PositiveCommutatorCore.longitudinal_double_negative
+#print axioms DGBOZK.PositiveCommutatorCore.longitudinal_commutator_kernel_sign
+#print axioms DGBOZK.PositiveCommutatorCore.parametrix_numerator_identity
+#print axioms DGBOZK.PositiveCommutatorCore.two_component_parametrix_identity
+#print axioms DGBOZK.PositiveCommutatorCore.positive_density_nonneg
+#print axioms DGBOZK.PositiveCommutatorCore.absorb_half_of_positive_form
