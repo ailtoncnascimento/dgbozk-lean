@@ -1,0 +1,15 @@
+/-
+# Axiom audit for the supplementary transverse-resonance route
+-/
+
+import DGBOZK.ResonanceTransverseSupplementary
+
+#print axioms DGBOZK.ResonanceTransverse.fractional_power_sum
+#print axioms DGBOZK.ResonanceTransverse.hasDerivAt_scalarFractionalPhase_zero
+#print axioms DGBOZK.ResonanceTransverse.hasDerivAt_scalarFractionalPhase
+#print axioms DGBOZK.ResonanceTransverse.scalarFractionalPhase_secant
+#print axioms DGBOZK.ResonanceTransverse.longitudinal_increment_universal
+#print axioms DGBOZK.ResonanceTransverse.rpow_mu_scale_bound
+#print axioms DGBOZK.ResonanceTransverse.longitudinal_bound_from_frequency_mu_scales
+#print axioms DGBOZK.ResonanceTransverse.longitudinal_hLong_from_frequency_mu_scales
+#print axioms DGBOZK.ResonanceTransverse.resonance_transverse_sector_conclusion_from_mu_scale

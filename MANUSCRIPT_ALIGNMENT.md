@@ -72,3 +72,28 @@ resonance-divisor route. The target manuscript identified above contains no
 Marcinkiewicz argument. These modules may be retained as supplementary
 experiments, but they are not part of the cleaned-manuscript alignment and must
 not be imported by the default `DGBOZK` target or its integrated axiom audit.
+
+## Supplementary transverse-resonance formalization
+
+The target cleaned manuscript does not contain
+`lem:resonance-transverse`. Accordingly, the transverse-resonance
+modules are not part of the default manuscript-alignment target.
+
+They instead provide a supplementary audit of an earlier auxiliary
+route. The corrected final theorem is
+
+`DGBOZK.ResonanceTransverse.resonance_transverse_sector_conclusion_from_mu_scale`.
+
+Unlike the earlier conditional interface, this theorem does not assume
+`hLong`. It derives the longitudinal estimate from
+
+\[
+1\leq\alpha\leq2,\qquad
+|\xi|\leq c_+N,\qquad
+|a|\leq\varepsilon N,\qquad
+N^{\alpha/2}\leq C_\mu\mu,\qquad
+C_1\mu\leq |b|.
+\]
+
+Thus the missing relation identified during the audit is explicit in
+the formal theorem statement.

@@ -76,6 +76,31 @@ The frequency-resolved nonlinear PDE energy inequality, existence of the
 required convergent approximation sequence, and identification of its limit
 with the constructed solution remain analytic inputs.
 
+## Supplementary transverse-resonance route
+
+The `ResonanceTransverse*`, `FractionalPhase*`,
+`FractionalPowerSumCore`, `ResonanceMuScale`, and
+`ResonanceLongitudinal*` modules form a supplementary audit of an
+earlier transverse-resonance route. They are intentionally not imported
+by the default `DGBOZK` target because the identified cleaned manuscript
+does not contain `lem:resonance-transverse`.
+
+Within this supplementary route, Lean proves:
+
+* the exact transverse-resonance expansion and polynomial component
+  estimates;
+* the derivative and global secant estimate for
+  `x * |x| ^ alpha`;
+* the universal fractional longitudinal increment estimate;
+* conversion of `N ^ (alpha / 2) <= Cmu * mu` and
+  `C1 * mu <= |b|` into longitudinal control by `N * b ^ 2`; and
+* the final transverse-resonance lower bound without an independent
+  `hLong` hypothesis.
+
+The reciprocal-resonance multiplier, all-order symbol estimates,
+Marcinkiewicz bounds, and associated operator estimates remain outside
+Lean.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
