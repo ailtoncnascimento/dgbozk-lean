@@ -97,3 +97,9 @@ C_1\mu\leq |b|.
 
 Thus the missing relation identified during the audit is explicit in
 the formal theorem statement.
+
+## Exact trilinear cancellation
+
+| Manuscript location | Lean declaration | Status |
+|---|---|---|
+| `lem:trilinear`, `eq:trilinear-master` | `TrilinearCancellationCore.exact_trilinear_cancellation` | **Checked conditionally.** The master identity follows exactly from the two slot-differentiation identities and commuting derivatives. Construction of the multiplier and analytic integration by parts remain outside this theorem. |

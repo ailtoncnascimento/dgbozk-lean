@@ -98,3 +98,7 @@ open DGBOZK
 #print axioms DGBOZK.PositiveCommutatorCore.two_component_parametrix_identity
 #print axioms DGBOZK.PositiveCommutatorCore.positive_density_nonneg
 #print axioms DGBOZK.PositiveCommutatorCore.absorb_half_of_positive_form
+
+
+/-! ## Exact trilinear cancellation -/
+#print axioms DGBOZK.TrilinearCancellationCore.exact_trilinear_cancellation

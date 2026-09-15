@@ -101,6 +101,16 @@ The reciprocal-resonance multiplier, all-order symbol estimates,
 Marcinkiewicz bounds, and associated operator estimates remain outside
 Lean.
 
+## Exact trilinear cancellation
+
+`TrilinearCancellationCore.lean` proves the identity labeled
+`lem:trilinear` and `eq:trilinear-master` from the two abstract
+slot-differentiation identities and commutation of the Cartesian
+derivatives. The proof is exact algebra over a commutative ring.
+
+The module does not construct the bilinear Fourier multiplier, justify the
+integrations by parts, or prove estimates for the resulting trilinear terms.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
