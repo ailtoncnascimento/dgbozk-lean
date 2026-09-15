@@ -19,6 +19,7 @@ import DGBOZK.Cancellation
 import DGBOZK.TrilinearCancellationCore
 import DGBOZK.TrilinearDifferentiationCore
 import DGBOZK.GaugeUpperEquivalenceCore
+import DGBOZK.GaugeUniquenessCore
 import DGBOZK.PositiveCommutatorCore
 import DGBOZK.FocusingThreshold
 import DGBOZK.EnergyEnvelope

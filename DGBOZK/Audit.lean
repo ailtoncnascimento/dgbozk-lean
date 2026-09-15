@@ -115,3 +115,8 @@ open DGBOZK
 #print axioms DGBOZK.GaugeLowerEquivalenceCore.half_energy_le_rho
 #print axioms DGBOZK.GaugeUpperEquivalenceCore.rho_le_energy
 #print axioms DGBOZK.GaugeUpperEquivalenceCore.gauge_energy_equivalence
+
+/-! ## Uniqueness of the positive gauge root -/
+#print axioms DGBOZK.GaugeUniquenessCore.gauge_sum_strict_decrease_of_x_ne_zero
+#print axioms DGBOZK.GaugeUniquenessCore.positive_root_eq_y_square_of_x_eq_zero
+#print axioms DGBOZK.GaugeUniquenessCore.positive_root_unique

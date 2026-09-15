@@ -122,3 +122,9 @@ the formal theorem statement.
 | lower half of `eq:gauge-equiv` | `GaugeLowerEquivalenceCore.half_energy_le_rho` | **Checked.** |
 | upper half of `eq:gauge-equiv` | `GaugeUpperEquivalenceCore.rho_le_energy` | **Checked for `1 <= alpha <= 2`.** |
 | complete `eq:gauge-equiv` | `GaugeUpperEquivalenceCore.gauge_energy_equivalence` | **Checked conditionally on a positive solution of `eq:gauge-def`.** |
+
+## Positive gauge-root uniqueness
+
+| Manuscript location | Lean declaration | Status |
+|---|---|---|
+| uniqueness assertion in `lem:gauge` | `GaugeUniquenessCore.positive_root_unique` | **Checked for `alpha > 0`.** Any two positive solutions of `eq:gauge-def` coincide. |
