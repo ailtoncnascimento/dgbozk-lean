@@ -102,3 +102,8 @@ open DGBOZK
 
 /-! ## Exact trilinear cancellation -/
 #print axioms DGBOZK.TrilinearCancellationCore.exact_trilinear_cancellation
+
+/-! ## Structural trilinear differentiation -/
+#print axioms DGBOZK.TrilinearDifferentiationCore.transverse_slot_identity
+#print axioms DGBOZK.TrilinearDifferentiationCore.longitudinal_slot_identity
+#print axioms DGBOZK.TrilinearDifferentiationCore.exact_trilinear_cancellation_from_structural_laws

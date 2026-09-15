@@ -103,3 +103,11 @@ the formal theorem statement.
 | Manuscript location | Lean declaration | Status |
 |---|---|---|
 | `lem:trilinear`, `eq:trilinear-master` | `TrilinearCancellationCore.exact_trilinear_cancellation` | **Checked conditionally.** The master identity follows exactly from the two slot-differentiation identities and commuting derivatives. Construction of the multiplier and analytic integration by parts remain outside this theorem. |
+
+## Structural trilinear differentiation
+
+| Manuscript location | Lean declaration | Status |
+|---|---|---|
+| `eq:delta-identities` | `TrilinearDifferentiationCore.transverse_slot_identity` | **Conditionally checked.** Derived from the transverse multiplier Leibniz rule and weighted integration by parts. |
+| `eq:delta-identities` | `TrilinearDifferentiationCore.longitudinal_slot_identity` | **Conditionally checked.** Produces exactly the negative weight-derivative functional. |
+| `lem:trilinear` | `TrilinearDifferentiationCore.exact_trilinear_cancellation_from_structural_laws` | **Checked from structural laws.** No slot-differentiation identity remains as a direct hypothesis. |

@@ -17,6 +17,7 @@ import DGBOZK.Fold
 import DGBOZK.Velocity
 import DGBOZK.Cancellation
 import DGBOZK.TrilinearCancellationCore
+import DGBOZK.TrilinearDifferentiationCore
 import DGBOZK.PositiveCommutatorCore
 import DGBOZK.FocusingThreshold
 import DGBOZK.EnergyEnvelope

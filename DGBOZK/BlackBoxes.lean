@@ -108,6 +108,12 @@ Lean.
 slot-differentiation identities and commutation of the Cartesian
 derivatives. The proof is exact algebra over a commutative ring.
 
+
+`TrilinearDifferentiationCore.lean` derives the two slot-differentiation
+identities from abstract multiplier Leibniz rules, additivity of the weighted
+pairing, and weighted integration-by-parts laws. Their realization by the
+actual Fourier multiplier and spatial integral remains analytic input.
+
 The module does not construct the bilinear Fourier multiplier, justify the
 integrations by parts, or prove estimates for the resulting trilinear terms.
 
