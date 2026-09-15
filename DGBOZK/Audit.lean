@@ -107,3 +107,11 @@ open DGBOZK
 #print axioms DGBOZK.TrilinearDifferentiationCore.transverse_slot_identity
 #print axioms DGBOZK.TrilinearDifferentiationCore.longitudinal_slot_identity
 #print axioms DGBOZK.TrilinearDifferentiationCore.exact_trilinear_cancellation_from_structural_laws
+
+/-! ## Scalar anisotropic gauge equivalence -/
+#print axioms DGBOZK.GaugeEquationCore.normalized_terms_mem_unit_interval
+#print axioms DGBOZK.GaugeEquationCore.coordinate_square_bounds
+#print axioms DGBOZK.GaugeLowerEquivalenceCore.abs_x_rpow_le_rho
+#print axioms DGBOZK.GaugeLowerEquivalenceCore.half_energy_le_rho
+#print axioms DGBOZK.GaugeUpperEquivalenceCore.rho_le_energy
+#print axioms DGBOZK.GaugeUpperEquivalenceCore.gauge_energy_equivalence

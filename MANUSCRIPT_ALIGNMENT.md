@@ -111,3 +111,14 @@ the formal theorem statement.
 | `eq:delta-identities` | `TrilinearDifferentiationCore.transverse_slot_identity` | **Conditionally checked.** Derived from the transverse multiplier Leibniz rule and weighted integration by parts. |
 | `eq:delta-identities` | `TrilinearDifferentiationCore.longitudinal_slot_identity` | **Conditionally checked.** Produces exactly the negative weight-derivative functional. |
 | `lem:trilinear` | `TrilinearDifferentiationCore.exact_trilinear_cancellation_from_structural_laws` | **Checked from structural laws.** No slot-differentiation identity remains as a direct hypothesis. |
+
+## Scalar anisotropic gauge
+
+| Manuscript location | Lean declaration | Status |
+|---|---|---|
+| `eq:gauge-def` | `GaugeEquationCore.gaugeEquation` | The positive-root equation is encoded exactly. |
+| normalized summands in `lem:gauge` | `GaugeEquationCore.normalized_terms_mem_unit_interval` | **Checked.** |
+| coordinate consequences | `GaugeLowerEquivalenceCore.abs_x_rpow_le_rho`, `y_square_le_rho` | **Checked.** |
+| lower half of `eq:gauge-equiv` | `GaugeLowerEquivalenceCore.half_energy_le_rho` | **Checked.** |
+| upper half of `eq:gauge-equiv` | `GaugeUpperEquivalenceCore.rho_le_energy` | **Checked for `1 <= alpha <= 2`.** |
+| complete `eq:gauge-equiv` | `GaugeUpperEquivalenceCore.gauge_energy_equivalence` | **Checked conditionally on a positive solution of `eq:gauge-def`.** |

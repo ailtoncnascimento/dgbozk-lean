@@ -117,6 +117,18 @@ actual Fourier multiplier and spatial integral remains analytic input.
 The module does not construct the bilinear Fourier multiplier, justify the
 integrations by parts, or prove estimates for the resulting trilinear terms.
 
+## Scalar anisotropic gauge
+
+The `Gauge*Core` modules formalize consequences of the positive-root equation
+defining the smooth anisotropic gauge. For `1 <= alpha <= 2`, they prove the
+coordinate estimates, evenness of the equation, and the exact comparison
+
+  `(1 / 2) * (|xi|^alpha + eta^2) <= rho <= |xi|^alpha + eta^2`.
+
+Existence and uniqueness of the positive root, smoothness away from the
+origin, anisotropic homogeneity, implicit differentiation, and uniform
+all-orders symbol estimates are not yet formalized.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
