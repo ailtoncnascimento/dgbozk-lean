@@ -135,3 +135,20 @@ the formal theorem statement.
 |---|---|---|
 | existence assertion in `lem:gauge` | `GaugeExistenceCore.exists_positive_gauge_root` | **Checked for `1 <= alpha <= 2` away from the origin.** The root lies in the explicit interval `[E/2,E]`. |
 | existence and uniqueness | `GaugeExistenceCore.existsUnique_positive_gauge_root` | **Checked.** This combines the IVT construction with positive-root uniqueness. |
+
+## Constructed anisotropic gauge
+
+| Manuscript location | Lean declaration | Status |
+|---|---|---|
+| selected gauge in `lem:gauge` | `GaugeFunctionCore.anisotropicGauge` | **Constructed.** It is the unique positive root away from the origin and is defined to be zero at the origin. |
+| origin normalization | `GaugeFunctionCore.anisotropicGauge_origin` | **Checked.** |
+| positivity away from the origin | `GaugeFunctionCore.anisotropicGauge_pos` | **Checked for `1 <= alpha <= 2`.** |
+| `eq:gauge-def` | `GaugeFunctionCore.anisotropicGauge_equation` | **Checked away from the origin.** |
+| positive-root characterization | `GaugeFunctionCore.anisotropicGauge_eq_of_positive_solution` | **Checked.** Every positive solution of the defining equation equals the selected gauge. |
+| `eq:gauge-equiv` | `GaugeFunctionCore.anisotropicGauge_energy_equivalence` | **Checked for the constructed gauge.** |
+| coordinate reflection symmetries | `GaugeSymmetryAxesCore.anisotropicGauge_neg_x`, `anisotropicGauge_neg_y`, `anisotropicGauge_neg_both` | **Checked.** |
+| coordinate-axis identities | `GaugeSymmetryAxesCore.anisotropicGauge_zero_x`, `anisotropicGauge_zero_y` | **Checked.** |
+| anisotropic scaling identity | `GaugeHomogeneityCore.anisotropicGauge_homogeneous` | **Checked for positive scaling factors.** |
+
+Smoothness away from the origin, implicit derivative formulas, and uniform
+all-orders symbol estimates remain outside the current Lean formalization.

@@ -28,5 +28,6 @@ import DGBOZK.FrequencyEnvelope
 import DGBOZK.FrequencyEnvelopeMaximum
 import DGBOZK.FrequencyEnvelopeLimit
 import DGBOZK.Bootstrap
+import DGBOZK.GaugeHomogeneityCore
 
 set_option autoImplicit false

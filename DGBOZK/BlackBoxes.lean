@@ -119,16 +119,24 @@ integrations by parts, or prove estimates for the resulting trilinear terms.
 
 ## Scalar anisotropic gauge
 
-The `Gauge*Core` modules formalize consequences of the positive-root equation
-defining the smooth anisotropic gauge. For `1 <= alpha <= 2`, they prove the
-coordinate estimates, evenness of the equation, and the exact comparison
+The `Gauge*Core` modules formalize the positive-root construction of the
+anisotropic gauge for `1 <= alpha <= 2`. They prove:
 
-  `(1 / 2) * (|xi|^alpha + eta^2) <= rho <= |xi|^alpha + eta^2`.
+* existence and uniqueness of the positive root away from the origin;
+* construction of a globally defined gauge, with value zero at the origin;
+* positivity and the defining equation away from the origin;
+* the exact comparison
 
-Existence and uniqueness of the positive root are formalized in the
-`GaugeExistence*` and `GaugeUniquenessCore` modules. Smoothness away from the
-origin, anisotropic homogeneity, implicit differentiation, and uniform
-all-orders symbol estimates are not yet formalized.
+    `(1 / 2) * (|xi|^alpha + eta^2) <= rho <= |xi|^alpha + eta^2`;
+
+* evenness in each frequency coordinate;
+* the exact values on the two coordinate axes; and
+* anisotropic homogeneity under the manuscript's frequency scaling.
+
+The selected gauge uses classical choice applied to the proved unique positive
+root. Smoothness away from the origin, implicit differentiation, explicit
+derivative formulas, and uniform all-orders symbol estimates are not yet
+formalized.
 
 ## Analysis not formalized
 

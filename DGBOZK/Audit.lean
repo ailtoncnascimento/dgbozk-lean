@@ -128,3 +128,16 @@ open DGBOZK
 #print axioms DGBOZK.GaugeExistenceCore.gaugeLeftSide_continuousOn
 #print axioms DGBOZK.GaugeExistenceCore.exists_positive_gauge_root
 #print axioms DGBOZK.GaugeExistenceCore.existsUnique_positive_gauge_root
+
+/-! ## Anisotropic gauge construction -/
+#print axioms DGBOZK.GaugeExistenceCore.exists_positive_gauge_root
+#print axioms DGBOZK.GaugeExistenceCore.existsUnique_positive_gauge_root
+#print axioms DGBOZK.GaugeFunctionCore.anisotropicGauge_pos
+#print axioms DGBOZK.GaugeFunctionCore.anisotropicGauge_equation
+#print axioms DGBOZK.GaugeFunctionCore.anisotropicGauge_eq_of_positive_solution
+#print axioms DGBOZK.GaugeFunctionCore.anisotropicGauge_energy_equivalence
+#print axioms DGBOZK.GaugeSymmetryAxesCore.anisotropicGauge_neg_x
+#print axioms DGBOZK.GaugeSymmetryAxesCore.anisotropicGauge_neg_y
+#print axioms DGBOZK.GaugeSymmetryAxesCore.anisotropicGauge_zero_x
+#print axioms DGBOZK.GaugeSymmetryAxesCore.anisotropicGauge_zero_y
+#print axioms DGBOZK.GaugeHomogeneityCore.anisotropicGauge_homogeneous
