@@ -120,3 +120,11 @@ open DGBOZK
 #print axioms DGBOZK.GaugeUniquenessCore.gauge_sum_strict_decrease_of_x_ne_zero
 #print axioms DGBOZK.GaugeUniquenessCore.positive_root_eq_y_square_of_x_eq_zero
 #print axioms DGBOZK.GaugeUniquenessCore.positive_root_unique
+
+/-! ## Existence of the positive gauge root -/
+#print axioms DGBOZK.GaugeExistenceEndpointsCore.anisotropicEnergy_pos
+#print axioms DGBOZK.GaugeExistenceEndpointsCore.gaugeLeftSide_energy_le_one
+#print axioms DGBOZK.GaugeExistenceEndpointsCore.one_le_gaugeLeftSide_half_energy
+#print axioms DGBOZK.GaugeExistenceCore.gaugeLeftSide_continuousOn
+#print axioms DGBOZK.GaugeExistenceCore.exists_positive_gauge_root
+#print axioms DGBOZK.GaugeExistenceCore.existsUnique_positive_gauge_root

@@ -125,8 +125,8 @@ coordinate estimates, evenness of the equation, and the exact comparison
 
   `(1 / 2) * (|xi|^alpha + eta^2) <= rho <= |xi|^alpha + eta^2`.
 
-Uniqueness of the positive root is formalized in
-`GaugeUniquenessCore.lean`. Existence of that root, smoothness away from the
+Existence and uniqueness of the positive root are formalized in the
+`GaugeExistence*` and `GaugeUniquenessCore` modules. Smoothness away from the
 origin, anisotropic homogeneity, implicit differentiation, and uniform
 all-orders symbol estimates are not yet formalized.
 

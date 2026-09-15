@@ -128,3 +128,10 @@ the formal theorem statement.
 | Manuscript location | Lean declaration | Status |
 |---|---|---|
 | uniqueness assertion in `lem:gauge` | `GaugeUniquenessCore.positive_root_unique` | **Checked for `alpha > 0`.** Any two positive solutions of `eq:gauge-def` coincide. |
+
+## Positive gauge-root existence
+
+| Manuscript location | Lean declaration | Status |
+|---|---|---|
+| existence assertion in `lem:gauge` | `GaugeExistenceCore.exists_positive_gauge_root` | **Checked for `1 <= alpha <= 2` away from the origin.** The root lies in the explicit interval `[E/2,E]`. |
+| existence and uniqueness | `GaugeExistenceCore.existsUnique_positive_gauge_root` | **Checked.** This combines the IVT construction with positive-root uniqueness. |
