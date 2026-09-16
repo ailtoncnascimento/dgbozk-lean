@@ -141,3 +141,11 @@ open DGBOZK
 #print axioms DGBOZK.GaugeSymmetryAxesCore.anisotropicGauge_zero_x
 #print axioms DGBOZK.GaugeSymmetryAxesCore.anisotropicGauge_zero_y
 #print axioms DGBOZK.GaugeHomogeneityCore.anisotropicGauge_homogeneous
+
+/-! ## Implicit-gauge nondegeneracy -/
+#print axioms DGBOZK.GaugeImplicitCore.gaugeRadialDenominator_mem_Icc
+#print axioms DGBOZK.GaugeImplicitCore.gaugeRadialDerivative_neg
+#print axioms DGBOZK.GaugeImplicitCore.longitudinal_implicit_derivative_formula
+#print axioms DGBOZK.GaugeImplicitCore.transverse_implicit_derivative_formula
+#print axioms DGBOZK.GaugeImplicitCore.anisotropicGauge_radialDenominator_mem_Icc
+#print axioms DGBOZK.GaugeImplicitCore.anisotropicGauge_radialDerivative_neg

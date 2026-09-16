@@ -134,9 +134,15 @@ anisotropic gauge for `1 <= alpha <= 2`. They prove:
 * anisotropic homogeneity under the manuscript's frequency scaling.
 
 The selected gauge uses classical choice applied to the proved unique positive
-root. Smoothness away from the origin, implicit differentiation, explicit
-derivative formulas, and uniform all-orders symbol estimates are not yet
-formalized.
+root. `GaugeImplicitCore.lean` proves that the radial implicit denominator
+belongs to `[1,2]`, that the radial derivative of the defining residual is
+strictly negative, and that the formal differentiated equations imply the
+displayed first-order derivative formulas.
+
+The module does not prove that the choice-defined gauge is differentiable.
+Smoothness away from the origin, a formal implicit-function-theorem
+application, realization of the structural derivative hypotheses, and uniform
+all-orders symbol estimates remain outside Lean.
 
 ## Analysis not formalized
 

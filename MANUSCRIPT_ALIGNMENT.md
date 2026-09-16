@@ -150,5 +150,22 @@ the formal theorem statement.
 | coordinate-axis identities | `GaugeSymmetryAxesCore.anisotropicGauge_zero_x`, `anisotropicGauge_zero_y` | **Checked.** |
 | anisotropic scaling identity | `GaugeHomogeneityCore.anisotropicGauge_homogeneous` | **Checked for positive scaling factors.** |
 
-Smoothness away from the origin, implicit derivative formulas, and uniform
-all-orders symbol estimates remain outside the current Lean formalization.
+Actual differentiability and smoothness of the choice-defined gauge, the
+analytic implicit-function-theorem step, and uniform all-orders symbol
+estimates remain outside the current Lean formalization.
+
+## Implicit-gauge nondegeneracy
+
+| Manuscript component | Lean declaration | Status |
+|---|---|---|
+| radial implicit denominator | `GaugeImplicitCore.gaugeRadialDenominator` | Encoded exactly from the normalized gauge equation. |
+| denominator coercivity | `GaugeImplicitCore.gaugeRadialDenominator_mem_Icc` | **Checked.** For `1 <= alpha <= 2`, the denominator lies in `[1,2]`. |
+| radial nondegeneracy | `GaugeImplicitCore.gaugeRadialDerivative_neg` | **Checked.** The radial derivative of the defining residual is strictly negative. |
+| longitudinal formal derivative formula | `GaugeImplicitCore.longitudinal_implicit_derivative_formula` | **Conditionally checked.** Derived exactly from the corresponding differentiated structural identity. |
+| transverse formal derivative formula | `GaugeImplicitCore.transverse_implicit_derivative_formula` | **Conditionally checked.** Derived exactly from the corresponding differentiated structural identity. |
+| constructed-gauge denominator bound | `GaugeImplicitCore.anisotropicGauge_radialDenominator_mem_Icc` | **Checked away from the origin.** |
+| constructed-gauge radial nondegeneracy | `GaugeImplicitCore.anisotropicGauge_radialDerivative_neg` | **Checked away from the origin.** |
+
+The two derivative formulas are algebraic consequences of differentiated
+identities. The present artifact does not claim that the choice-defined gauge
+has already been differentiated in Lean.
