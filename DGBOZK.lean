@@ -8,7 +8,7 @@ Companion formalization for
 
 See `README.md` for the scope of the claim and `DGBOZK/BlackBoxes.lean` for the
 trust boundary.  This default target deliberately excludes the legacy
-normal-form resonance module and the unfinished Fourier-foundation modules.
+normal-form resonance module while retaining the analytic Fourier estimates in the documented trust boundary.
 -/
 import DGBOZK.BlackBoxes
 import DGBOZK.Exponents
@@ -30,5 +30,7 @@ import DGBOZK.FrequencyEnvelopeLimit
 import DGBOZK.Bootstrap
 import DGBOZK.GaugeHomogeneityCore
 import DGBOZK.GaugeImplicitCore
+import DGBOZK.Foundations.SmoothCutoffConstruction
+import DGBOZK.Foundations.FourierInversion
 
 set_option autoImplicit false

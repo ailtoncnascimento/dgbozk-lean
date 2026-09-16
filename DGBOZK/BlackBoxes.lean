@@ -144,11 +144,32 @@ Smoothness away from the origin, a formal implicit-function-theorem
 application, realization of the structural derivative hypotheses, and uniform
 all-orders symbol estimates remain outside Lean.
 
+## Fourier foundations
+
+The registered `Foundations` modules formalize:
+
+* the physical and frequency coordinate spaces;
+* the manuscript Fourier phase and normalization conventions;
+* anisotropic low-frequency regions and dyadic annuli;
+* coordinate bounds implied by membership in those regions;
+* an abstract smooth scalar cutoff profile;
+* low-pass and band-pass symbols and their support identities;
+* the finite telescoping identity for dyadic bands;
+* construction of a canonical scalar profile from
+  `Real.smoothTransition`; and
+* Fourier inversion for Schwartz functions in the manuscript convention,
+  including the two-dimensional `(2 * pi) ^ (-2)` normalization.
+
+These modules do not prove global smoothness of every fractional anisotropic
+symbol at `xi = 0`, infinite Littlewood--Paley convergence, multiplier
+boundedness, square-function norm equivalence, or inversion for general
+`L1`, `L2`, or tempered-distribution data.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
 
-* anisotropic Littlewood--Paley theory beyond preliminary convention files;
+* analytic anisotropic Littlewood--Paley multiplier bounds, infinite decompositions, and norm equivalences;
 * oscillatory-integral and van der Corput estimates;
 * the TT-star argument and mixed maximal-function estimates;
 * bilinear multiplier and weighted paraproduct estimates;

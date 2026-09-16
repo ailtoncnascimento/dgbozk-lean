@@ -45,11 +45,24 @@ proof of the local-well-posedness theorem.
 
 ## Fourier foundations
 
-The modules under `DGBOZK/Foundations` develop conventions for coordinates,
-Fourier transformation and inversion, anisotropic regions, and smooth dyadic
-cutoffs. Some have been compiled separately, but they are not imported by
-`DGBOZK.lean`. They are therefore not part of the passing default target or
-the integrated axiom audit recorded here.
+The relevant modules under `DGBOZK/Foundations` are now imported transitively
+by `DGBOZK.lean` through `SmoothCutoffConstruction` and `FourierInversion`.
+They are part of the passing default target and integrated axiom audit.
+
+| Manuscript component | Lean declaration | Status |
+|---|---|---|
+| anisotropic frequency size | `Foundations.anisotropicSymbol` | Encoded from `|xi|^alpha + eta^2`. |
+| low-frequency region and dyadic annulus | `Foundations.lowFrequencyRegion`, `Foundations.dyadicAnnulus` | **Checked.** |
+| coordinate control on an annulus | `Foundations.xiPower_le_of_mem_dyadicAnnulus`, `etaSq_le_of_mem_dyadicAnnulus` | **Checked.** |
+| abstract scalar cutoff | `Foundations.SmoothCutoffProfile` | Encodes smoothness, support, and range requirements. |
+| finite dyadic telescoping | `Foundations.sum_dyadicBandSymbol` | **Checked.** |
+| canonical decreasing cutoff | `Foundations.standardSmoothCutoffProfile` | Constructed from Mathlib's `Real.smoothTransition`. |
+| band support localization | `Foundations.standardBandPassActiveSet_subset_dyadicAnnulus` | **Checked.** |
+| manuscript-normalized Schwartz inversion | `Foundations.normalized_paperFourier_inversion` | **Checked.** Includes the two-dimensional Fourier normalization. |
+
+The artifact does not claim analytic multiplier boundedness, infinite
+Littlewood--Paley convergence, square-function norm equivalence, or Fourier
+inversion outside the stated Schwartz-function interface.
 
 ## Verified integration checkpoint
 

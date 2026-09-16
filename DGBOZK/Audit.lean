@@ -149,3 +149,10 @@ open DGBOZK
 #print axioms DGBOZK.GaugeImplicitCore.transverse_implicit_derivative_formula
 #print axioms DGBOZK.GaugeImplicitCore.anisotropicGauge_radialDenominator_mem_Icc
 #print axioms DGBOZK.GaugeImplicitCore.anisotropicGauge_radialDerivative_neg
+
+/-! ## Fourier and Littlewood--Paley foundations -/
+#print axioms DGBOZK.Foundations.sum_dyadicBandSymbol
+#print axioms DGBOZK.Foundations.standardSmoothCutoffProfile_antitone
+#print axioms DGBOZK.Foundations.standardBandPassActiveSet_subset_dyadicAnnulus
+#print axioms DGBOZK.Foundations.integral_comp_twoPi_smul
+#print axioms DGBOZK.Foundations.normalized_paperFourier_inversion
