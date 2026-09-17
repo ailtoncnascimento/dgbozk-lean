@@ -32,5 +32,7 @@ import DGBOZK.GaugeHomogeneityCore
 import DGBOZK.GaugeImplicitCore
 import DGBOZK.Foundations.SmoothCutoffConstruction
 import DGBOZK.Foundations.FourierInversion
+import DGBOZK.Foundations.L2MultiplierCore
+import DGBOZK.Foundations.DyadicProjectorL2Core
 
 set_option autoImplicit false

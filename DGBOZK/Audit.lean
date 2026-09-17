@@ -156,3 +156,20 @@ open DGBOZK
 #print axioms DGBOZK.Foundations.standardBandPassActiveSet_subset_dyadicAnnulus
 #print axioms DGBOZK.Foundations.integral_comp_twoPi_smul
 #print axioms DGBOZK.Foundations.normalized_paperFourier_inversion
+
+/-! ## Bounded pointwise multipliers and abstract L2 bridge -/
+#print axioms DGBOZK.Foundations.L2MultiplierCore.pointwise_product_norm_bound
+#print axioms DGBOZK.Foundations.L2MultiplierCore.bounded_pointwise_multiplier_memLp
+#print axioms DGBOZK.Foundations.L2MultiplierCore.eLpNorm_bounded_pointwise_multiplier_le
+#print axioms DGBOZK.Foundations.L2MultiplierCore.bounded_pointwise_multiplier_memLp_two
+#print axioms DGBOZK.Foundations.L2MultiplierCore.eLpNorm_two_bounded_pointwise_multiplier_le
+#print axioms DGBOZK.Foundations.L2MultiplierCore.norm_conjugated_operator_le
+
+/-! ## Dyadic L2 projector foundation -/
+#print axioms DGBOZK.Foundations.DyadicProjectorL2Core.complexDyadicBandSymbol_norm_le_one
+#print axioms DGBOZK.Foundations.DyadicProjectorL2Core.complexDyadicBandSymbol_active_subset_dyadicAnnulus
+#print axioms DGBOZK.Foundations.DyadicProjectorL2Core.dyadicBandMultiplier_eLpNorm_two_le
+#print axioms DGBOZK.Foundations.DyadicProjectorL2Core.dyadicBandMultiplier_memLp_two
+#print axioms DGBOZK.Foundations.DyadicProjectorL2Core.standardDyadicBandMultiplier_eLpNorm_two_le
+#print axioms DGBOZK.Foundations.DyadicProjectorL2Core.conjugatedDyadicProjector_norm_le
+

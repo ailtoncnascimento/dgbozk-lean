@@ -182,3 +182,14 @@ estimates remain outside the current Lean formalization.
 The two derivative formulas are algebraic consequences of differentiated
 identities. The present artifact does not claim that the choice-defined gauge
 has already been differentiated in Lean.
+
+## L2 multiplier and dyadic-projector foundation
+
+| Manuscript interface | Lean declaration | Status |
+|---|---|---|
+| bounded frequency multiplier | `L2MultiplierCore.eLpNorm_two_bounded_pointwise_multiplier_le` | **Checked.** A uniformly bounded complex symbol gives the corresponding `eLpNorm` estimate. |
+| dyadic cutoff bound | `DyadicProjectorL2Core.complexDyadicBandSymbol_norm_le_one` | **Checked.** The constructed complexified band symbol has norm at most one. |
+| dyadic annular localization | `DyadicProjectorL2Core.complexDyadicBandSymbol_active_subset_dyadicAnnulus` | **Checked.** |
+| frequency-side dyadic contraction | `DyadicProjectorL2Core.standardDyadicBandMultiplier_eLpNorm_two_le` | **Checked.** |
+| physical-space projector contraction | `DyadicProjectorL2Core.conjugatedDyadicProjector_norm_le` | **Conditionally checked.** It assumes norm-preserving forward and inverse transforms. |
+| Euclidean Plancherel realization | — | **Outside Lean.** The pinned Mathlib does not presently supply the required Euclidean `L2` Fourier isometry. |

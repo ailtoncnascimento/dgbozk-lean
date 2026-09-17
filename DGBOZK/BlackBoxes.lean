@@ -165,6 +165,23 @@ symbol at `xi = 0`, infinite Littlewood--Paley convergence, multiplier
 boundedness, square-function norm equivalence, or inversion for general
 `L1`, `L2`, or tempered-distribution data.
 
+## Fourier multipliers and dyadic projectors
+
+`L2MultiplierCore.lean` proves the pointwise bounded-multiplier estimate,
+preservation of `MemLp`, the corresponding `eLpNorm` inequality, and an
+abstract norm-conjugation theorem.
+
+`DyadicProjectorL2Core.lean` applies this theory to the constructed
+anisotropic dyadic band symbols. It proves their uniform norm bound, annular
+support, frequency-side `L2` contraction, and transport of a contractive
+frequency multiplier through explicitly supplied norm-preserving forward and
+inverse transforms.
+
+The concrete Euclidean Plancherel realization of those transforms is not
+available in the pinned Mathlib and remains outside the machine-checked
+artifact. Accordingly, the physical-space projector theorem is conditional on
+the stated norm-preservation hypotheses.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
