@@ -189,3 +189,7 @@ open DGBOZK
 #print axioms DGBOZK.Foundations.DyadicActiveCardinalityCore.active_indices_subset_nearDyadicIndexSet
 #print axioms DGBOZK.Foundations.DyadicActiveCardinalityCore.active_indices_card_le_five
 #print axioms DGBOZK.Foundations.DyadicActiveCardinalityCore.standard_active_indices_card_le_five
+
+/-! ## Quantitative dyadic interaction bound -/
+#print axioms DGBOZK.Foundations.DyadicFiniteSumBoundCore.sum_abs_le_five_mul_of_card_le_five
+#print axioms DGBOZK.Foundations.DyadicInteractionBoundCore.standardDyadicBand_interaction_abs_sum_le_five

@@ -38,5 +38,7 @@ import DGBOZK.Foundations.DyadicAnnulusSeparationCore
 import DGBOZK.Foundations.DyadicFiniteOverlapCore
 import DGBOZK.Foundations.DyadicInteractionSumCore
 import DGBOZK.Foundations.DyadicActiveCardinalityCore
+import DGBOZK.Foundations.DyadicFiniteSumBoundCore
+import DGBOZK.Foundations.DyadicInteractionBoundCore
 
 set_option autoImplicit false

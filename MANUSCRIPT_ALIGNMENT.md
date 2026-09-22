@@ -209,3 +209,14 @@ This layer formalizes the support combinatorics used before analytic
 Littlewood--Paley and paraproduct estimates. It does not establish
 square-function norm equivalence, weighted operator estimates, or nonlinear
 frequency-interaction bounds.
+
+## Quantitative dyadic interaction estimate
+
+| Analytic role | Lean declaration | Status |
+|---|---|---|
+| Abstract five-term estimate | `DyadicFiniteSumBoundCore.sum_abs_le_five_mul_of_card_le_five` | **Checked.** A finite family of at most five absolute-valued contributions is bounded by five times their common bound. |
+| Pointwise dyadic interaction estimate | `DyadicInteractionBoundCore.dyadicBand_interaction_abs_sum_le_five` | **Checked.** Any finite interaction family has total absolute symbol contribution at most five. |
+| Canonical cutoff specialization | `DyadicInteractionBoundCore.standardDyadicBand_interaction_abs_sum_le_five` | **Checked.** The result applies to the constructed standard smooth cutoff profile. |
+
+The estimate is pointwise in frequency. No square-function norm equivalence,
+weighted multiplier estimate, or nonlinear paraproduct theorem is claimed.

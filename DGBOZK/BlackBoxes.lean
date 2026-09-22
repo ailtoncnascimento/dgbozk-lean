@@ -201,6 +201,24 @@ Littlewood--Paley square-function equivalence, vector-valued multiplier
 estimate, weighted almost orthogonality, product-frequency convolution bound,
 or nonlinear paraproduct estimate.
 
+## Quantitative dyadic interaction bound
+
+`DyadicFiniteSumBoundCore.lean` converts a cardinality bound of five into
+the explicit estimate that a finite sum of uniformly bounded absolute-valued
+contributions is at most five times the common bound.
+
+`DyadicInteractionBoundCore.lean` applies this result to the dyadic band
+symbols and proves
+
+  `sum_j |psi_k(zeta) psi_j(zeta)| <= 5`
+
+over every finite index family. The proof uses the unit symbol bound and the
+exact five-index interaction window.
+
+This is a pointwise scalar estimate. It does not establish an `L2`
+square-function equivalence, Cotlar--Stein almost orthogonality, a weighted
+operator estimate, or a nonlinear paraproduct bound.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
