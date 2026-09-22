@@ -196,3 +196,16 @@ open DGBOZK
 
 /-! ## Finite dyadic family norm bridge -/
 #print axioms DGBOZK.Foundations.DyadicFiniteFamilyNormCore.norm_standard_active_dyadic_sum_le_five
+
+/-! ## Verified phase differentiation -/
+#print axioms DGBOZK.PhaseTransverseDifferentiationCore.hasDerivAt_omega_eta
+#print axioms DGBOZK.PhaseTransverseDifferentiationCore.hasDerivAt_velX_eta
+#print axioms DGBOZK.PhaseTransverseDifferentiationCore.hasDerivAt_velY_eta
+#print axioms DGBOZK.PhaseTransverseDifferentiationCore.hasDerivAt_velY_xi
+#print axioms DGBOZK.PhaseTransverseDifferentiationCore.verified_mixed_derivatives_agree
+#print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.hasDerivAt_omega_xi_abs
+#print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.hasDerivAt_omega_xi_of_pos
+#print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.hasDerivAt_positive_rpow
+#print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.hasDerivAt_velX_xi_of_pos
+#print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.deriv_omega_xi_of_pos
+#print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.deriv_velX_xi_of_pos

@@ -12,18 +12,21 @@ a sign wrong in `∇ω_σ` or in `det D²ω_σ` would invert that exchange and
 invalidate the architecture of the paper, so this is the first thing worth
 machine-checking.
 
-## What is proved and what is assumed
+## Verification status
 
-Following Terence Tao's conditional-formalization strategy, the *differentiation
-step* is the declared black box.  Concretely: the first- and second-order
-partial derivatives of `ω_σ` are introduced as **definitions** matching the
-formulas displayed in the paper, and everything downstream is then proved.  The
-one genuine consistency check available at this level — that the displayed
-determinant really is `∂²_ξ ω · ∂²_η ω − (∂_ξ∂_η ω)²` computed from the
-displayed second derivatives — *is* carried out, and it is a real check, since
-it exercises the exponent bookkeeping `ξ^{α−1} · ξ = ξ^α`.
+The displayed first- and second-order partial derivatives are retained below
+as named definitions because the subsequent phase-geometry modules use those
+names. They are no longer analytic black boxes.
 
-See `DGBOZK/BlackBoxes.lean` for the precise statement of `[BB-DIFF]`.
+`PhaseTransverseDifferentiationCore.lean` proves the transverse and mixed
+derivative formulas as genuine `HasDerivAt` statements.
+`PhaseLongitudinalDifferentiationCore.lean` proves the global longitudinal
+formula for `alpha > 0` and identifies it with `velX` on `xi > 0`; it also
+proves that the longitudinal derivative of `velX` is `hessXX`.
+
+Consequently, every first- and second-order derivative formula displayed in
+this module has been checked directly in Lean. The Hessian determinant identity
+below is then proved algebraically from these verified entries.
 
 Throughout we work on the half-plane `ξ > 0`, exactly as the paper does ("on
 each half-plane `±ξ > 0`"); the case `ξ < 0` follows by the reflection
@@ -75,19 +78,19 @@ section HalfPlane
 variable {α σ ξ η : ℝ}
 
 /-- `∂_ξ ω_σ = σ(α+1)ξ^α + η²`, the longitudinal group velocity, `ξ > 0`.
-**[BB-DIFF]** -/
+-/
 noncomputable def velX (α σ ξ η : ℝ) : ℝ := σ * (α + 1) * ξ ^ α + η ^ 2
 
-/-- `∂_η ω_σ = 2ξη`, the transverse group velocity.  **[BB-DIFF]** -/
+/-- `∂_η ω_σ = 2ξη`, the transverse group velocity. -/
 noncomputable def velY (ξ η : ℝ) : ℝ := 2 * ξ * η
 
-/-- `∂²_ξ ω_σ = σ α(α+1) ξ^{α−1}`.  **[BB-DIFF]** -/
+/-- `∂²_ξ ω_σ = σ α(α+1) ξ^{α−1}`. -/
 noncomputable def hessXX (α σ ξ : ℝ) : ℝ := σ * (α * (α + 1)) * ξ ^ (α - 1)
 
-/-- `∂_ξ∂_η ω_σ = 2η`.  **[BB-DIFF]** -/
+/-- `∂_ξ∂_η ω_σ = 2η`. -/
 noncomputable def hessXY (η : ℝ) : ℝ := 2 * η
 
-/-- `∂²_η ω_σ = 2ξ`.  **[BB-DIFF]** -/
+/-- `∂²_η ω_σ = 2ξ`. -/
 noncomputable def hessYY (ξ : ℝ) : ℝ := 2 * ξ
 
 /-- `det D²ω_σ = 2σα(α+1)ξ^α − 4η²`, as displayed in `(eq:grad-ell)` /
@@ -184,7 +187,7 @@ theorem gamma_plus_balanced (hξ : 0 < ξ) (_hα : 1 ≤ α)
   rw [rho_of_pos hξ, h1]; ring
 
 /-- Transversality of the fold: `∂_ξ(det D²ω_+) = 2α²(α+1)ξ^{α−1} ≠ 0`.
-**[BB-DIFF]** for the derivative formula; the nonvanishing is proved. -/
+for the derivative formula; the nonvanishing is proved. -/
 noncomputable def dHessDetDefocusing (α ξ : ℝ) : ℝ := 2 * α ^ 2 * (α + 1) * ξ ^ (α - 1)
 
 theorem dHessDetDefocusing_pos (hξ : 0 < ξ) (hα : 1 ≤ α) :

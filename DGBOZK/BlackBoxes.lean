@@ -25,12 +25,32 @@ The default target covers:
 * the scalar positivity and absorption consequences used after the analytic
   estimates have been established.
 
-## Displayed derivatives
+## Verified phase differentiation
 
-In `Phase.lean` and `Fold.lean`, several derivative formulas are definitions
-matching the manuscript. Downstream theorems validate consequences of those
-formulas but do not prove that they are derivatives of the original phase.
-The Hessian determinant identity is proved from the displayed Hessian entries.
+The first- and second-order derivatives displayed in `Phase.lean` are no
+longer part of the analytic trust boundary.
+
+`PhaseTransverseDifferentiationCore.lean` proves:
+
+* the transverse derivative of `omega`;
+* the transverse derivative of `velX`;
+* the transverse derivative of `velY`;
+* the longitudinal derivative of `velY`; and
+* equality of the two verified mixed derivative values.
+
+`PhaseLongitudinalDifferentiationCore.lean` proves:
+
+* the global longitudinal derivative of `omega` for `alpha > 0`;
+* its identification with `velX` on the half-plane `xi > 0`; and
+* the identification of the longitudinal derivative of `velX` with `hessXX`.
+
+Thus all gradient and Hessian entries used by the phase-geometry calculation
+are genuine Lean derivative theorems. The Hessian determinant identity is
+proved algebraically from those entries.
+
+Displayed differentiation assertions that occur separately in `Fold.lean`
+have not been promoted by these modules and remain explicitly outside this
+verified phase-differentiation checkpoint.
 
 ## Localized cubic cancellation
 

@@ -43,6 +43,23 @@ proof of the local-well-posedness theorem.
 | Localized positive commutator (`lem:positive-comm`) | **Partially checked and analytically audited.** The sign-sensitive algebra is formalized; the operator estimates are not. |
 | Main local-well-posedness theorem (`thm:main`) | **Outside Lean.** |
 
+## Verified phase differentiation
+
+| Manuscript assertion | Lean declaration | Status |
+|---|---|---|
+| `partial_eta omega_sigma = 2 xi eta` | `PhaseTransverseDifferentiationCore.hasDerivAt_omega_eta` | **Checked as a genuine derivative.** |
+| `partial_xi omega_sigma = eta^2 + sigma (alpha+1)|xi|^alpha` | `PhaseLongitudinalDifferentiationCore.hasDerivAt_omega_xi_abs` | **Checked globally for `alpha > 0`.** |
+| Positive-half-plane longitudinal velocity | `PhaseLongitudinalDifferentiationCore.hasDerivAt_omega_xi_of_pos` | **Checked.** The derivative is exactly `velX` when `xi > 0`. |
+| `partial_xi velX = hessXX` | `PhaseLongitudinalDifferentiationCore.hasDerivAt_velX_xi_of_pos` | **Checked for `xi > 0`.** |
+| `partial_eta velX = hessXY` | `PhaseTransverseDifferentiationCore.hasDerivAt_velX_eta` | **Checked.** |
+| `partial_xi velY = hessXY` | `PhaseTransverseDifferentiationCore.hasDerivAt_velY_xi` | **Checked.** |
+| `partial_eta velY = hessYY` | `PhaseTransverseDifferentiationCore.hasDerivAt_velY_eta` | **Checked.** |
+| Equality of the mixed derivatives | `PhaseTransverseDifferentiationCore.verified_mixed_derivatives_agree` | **Checked.** |
+
+The phase gradient and Hessian formulas are therefore no longer merely
+displayed definitions. This checkpoint does not automatically formalize
+separate derivative assertions appearing in `Fold.lean`.
+
 ## Fourier foundations
 
 The relevant modules under `DGBOZK/Foundations` are now imported transitively

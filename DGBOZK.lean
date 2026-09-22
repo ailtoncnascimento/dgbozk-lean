@@ -13,6 +13,8 @@ normal-form resonance module while retaining the analytic Fourier estimates in t
 import DGBOZK.BlackBoxes
 import DGBOZK.Exponents
 import DGBOZK.Phase
+import DGBOZK.PhaseTransverseDifferentiationCore
+import DGBOZK.PhaseLongitudinalDifferentiationCore
 import DGBOZK.Fold
 import DGBOZK.Velocity
 import DGBOZK.Cancellation
