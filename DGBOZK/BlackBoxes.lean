@@ -219,6 +219,22 @@ This is a pointwise scalar estimate. It does not establish an `L2`
 square-function equivalence, Cotlar--Stein almost orthogonality, a weighted
 operator estimate, or a nonlinear paraproduct bound.
 
+## Finite dyadic family norm bridge
+
+`DyadicFiniteFamilyNormCore.lean` lifts the five-index cardinality estimate
+from scalar sums to families in an arbitrary seminormed additive commutative
+group. It proves that a sum of at most five vectors, each having norm bounded
+by `B`, has norm at most `5 * B`.
+
+The theorem is specialized both to the near-index filter and to the actual
+active dyadic-index filter. It can therefore be instantiated with vectors in
+an `L2` space once the relevant Fourier multiplier outputs have been
+constructed.
+
+The module does not construct those multiplier outputs, prove a
+Littlewood--Paley square-function equivalence, establish Hilbert-space
+orthogonality, or invoke the Cotlar--Stein lemma.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:

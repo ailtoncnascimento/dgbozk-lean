@@ -220,3 +220,16 @@ frequency-interaction bounds.
 
 The estimate is pointwise in frequency. No square-function norm equivalence,
 weighted multiplier estimate, or nonlinear paraproduct theorem is claimed.
+
+## Finite-family norm bridge
+
+| Analytic role | Lean declaration | Status |
+|---|---|---|
+| Abstract norm bound for at most five terms | `DyadicFiniteFamilyNormCore.norm_sum_le_five_mul_of_card_le_five` | **Checked.** Triangle inequality plus the explicit cardinality estimate. |
+| Near-index vector-family estimate | `DyadicFiniteFamilyNormCore.norm_near_dyadic_sum_le_five` | **Checked.** |
+| Active dyadic vector-family estimate | `DyadicFiniteFamilyNormCore.norm_active_dyadic_sum_le_five` | **Checked.** |
+| Canonical-cutoff specialization | `DyadicFiniteFamilyNormCore.norm_standard_active_dyadic_sum_le_five` | **Checked.** |
+
+This is an abstract finite-family norm estimate. Its use with actual Fourier
+projectors requires the analytic multiplier realization already identified in
+the trust boundary.

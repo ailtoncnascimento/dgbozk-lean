@@ -193,3 +193,6 @@ open DGBOZK
 /-! ## Quantitative dyadic interaction bound -/
 #print axioms DGBOZK.Foundations.DyadicFiniteSumBoundCore.sum_abs_le_five_mul_of_card_le_five
 #print axioms DGBOZK.Foundations.DyadicInteractionBoundCore.standardDyadicBand_interaction_abs_sum_le_five
+
+/-! ## Finite dyadic family norm bridge -/
+#print axioms DGBOZK.Foundations.DyadicFiniteFamilyNormCore.norm_standard_active_dyadic_sum_le_five
