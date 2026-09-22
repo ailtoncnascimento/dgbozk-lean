@@ -193,3 +193,19 @@ has already been differentiated in Lean.
 | frequency-side dyadic contraction | `DyadicProjectorL2Core.standardDyadicBandMultiplier_eLpNorm_two_le` | **Checked.** |
 | physical-space projector contraction | `DyadicProjectorL2Core.conjugatedDyadicProjector_norm_le` | **Conditionally checked.** It assumes norm-preserving forward and inverse transforms. |
 | Euclidean Plancherel realization | — | **Outside Lean.** The pinned Mathlib does not presently supply the required Euclidean `L2` Fourier isometry. |
+
+## Dyadic finite-overlap calculus
+
+| Analytic role | Lean declaration | Status |
+|---|---|---|
+| Separation of dyadic annuli | `DyadicAnnulusSeparationCore.dyadicBandSymbol_mul_eq_zero_of_separated` | **Checked.** Separated bands have zero pointwise symbol product. |
+| Separation from an index gap | `DyadicFiniteOverlapCore.dyadicBandSymbol_mul_eq_zero_of_index_separation` | **Checked.** An index separation of at least three forces disjoint activity. |
+| Localization of active interactions | `DyadicFiniteOverlapCore.active_dyadic_indices_within_two` | **Checked.** Simultaneously active indices differ by at most two. |
+| Restriction of an interaction sum | `DyadicInteractionSumCore.dyadicBand_interaction_sum_eq_near_filter` | **Checked.** A finite interaction sum equals its restriction to nearby indices. |
+| Cardinality of nearby indices | `DyadicActiveCardinalityCore.nearDyadicIndexSet_card_le_five` | **Checked.** The nearby-index set has at most five members. |
+| Cardinality of active interactions | `DyadicActiveCardinalityCore.active_indices_card_le_five` | **Checked.** At most five indices in a finite family interact with a fixed band. |
+
+This layer formalizes the support combinatorics used before analytic
+Littlewood--Paley and paraproduct estimates. It does not establish
+square-function norm equivalence, weighted operator estimates, or nonlinear
+frequency-interaction bounds.

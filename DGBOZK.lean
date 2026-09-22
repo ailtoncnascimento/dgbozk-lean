@@ -34,5 +34,9 @@ import DGBOZK.Foundations.SmoothCutoffConstruction
 import DGBOZK.Foundations.FourierInversion
 import DGBOZK.Foundations.L2MultiplierCore
 import DGBOZK.Foundations.DyadicProjectorL2Core
+import DGBOZK.Foundations.DyadicAnnulusSeparationCore
+import DGBOZK.Foundations.DyadicFiniteOverlapCore
+import DGBOZK.Foundations.DyadicInteractionSumCore
+import DGBOZK.Foundations.DyadicActiveCardinalityCore
 
 set_option autoImplicit false

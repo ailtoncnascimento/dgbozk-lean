@@ -182,6 +182,25 @@ available in the pinned Mathlib and remains outside the machine-checked
 artifact. Accordingly, the physical-space projector theorem is conditional on
 the stated norm-preservation hypotheses.
 
+## Dyadic separation and finite overlap
+
+The dyadic-foundation modules now prove the exact scalar support combinatorics
+behind finite overlap:
+
+* dyadic bands whose indices differ by at least three cannot be simultaneously
+  active at the same frequency;
+* every band interacting with a fixed band of index `k` has index within two
+  steps of `k`;
+* a finite dyadic interaction sum can be restricted exactly to those nearby
+  indices; and
+* at most five indices in any finite family can interact with a fixed dyadic
+  band.
+
+These are pointwise support and finite-sum statements. They do not prove a
+Littlewood--Paley square-function equivalence, vector-valued multiplier
+estimate, weighted almost orthogonality, product-frequency convolution bound,
+or nonlinear paraproduct estimate.
+
 ## Analysis not formalized
 
 The following parts of the cleaned manuscript remain outside Lean:
