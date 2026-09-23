@@ -209,3 +209,11 @@ open DGBOZK
 #print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.hasDerivAt_velX_xi_of_pos
 #print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.deriv_omega_xi_of_pos
 #print axioms DGBOZK.PhaseLongitudinalDifferentiationCore.deriv_velX_xi_of_pos
+
+/-! ## Verified reduced-fold differentiation -/
+#print axioms DGBOZK.FoldDifferentiationCore.hasDerivAt_Psi
+#print axioms DGBOZK.FoldDifferentiationCore.hasDerivAt_Psi1
+#print axioms DGBOZK.FoldDifferentiationCore.hasDerivAt_Psi2
+#print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi_eq_Psi1
+#print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi1_eq_Psi2
+#print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi2_eq_Psi3

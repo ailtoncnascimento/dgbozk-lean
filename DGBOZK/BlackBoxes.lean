@@ -48,9 +48,10 @@ Thus all gradient and Hessian entries used by the phase-geometry calculation
 are genuine Lean derivative theorems. The Hessian determinant identity is
 proved algebraically from those entries.
 
-Displayed differentiation assertions that occur separately in `Fold.lean`
-have not been promoted by these modules and remain explicitly outside this
-verified phase-differentiation checkpoint.
+`FoldDifferentiationCore.lean` additionally proves the genuine derivative
+chain from the reduced phase `Psi` through `Psi1`, `Psi2`, and `Psi3` on
+`xi > 0` and `t != 0`. Thus the elementary phase and reduced-fold
+differentiation formulas no longer belong to the analytic trust boundary.
 
 ## Localized cubic cancellation
 

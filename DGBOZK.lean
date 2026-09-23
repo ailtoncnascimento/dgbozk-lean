@@ -16,6 +16,7 @@ import DGBOZK.Phase
 import DGBOZK.PhaseTransverseDifferentiationCore
 import DGBOZK.PhaseLongitudinalDifferentiationCore
 import DGBOZK.Fold
+import DGBOZK.FoldDifferentiationCore
 import DGBOZK.Velocity
 import DGBOZK.Cancellation
 import DGBOZK.TrilinearCancellationCore

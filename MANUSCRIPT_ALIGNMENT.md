@@ -60,6 +60,20 @@ The phase gradient and Hessian formulas are therefore no longer merely
 displayed definitions. This checkpoint does not automatically formalize
 separate derivative assertions appearing in `Fold.lean`.
 
+## Verified reduced-fold differentiation
+
+| Manuscript assertion | Lean declaration | Status |
+|---|---|---|
+| First reduced-phase derivative | `FoldDifferentiationCore.hasDerivAt_Psi` | **Checked for `xi > 0` and `t != 0`.** |
+| `Psi'' = Psi2` | `FoldDifferentiationCore.hasDerivAt_Psi1` | **Checked as the second derivative step.** |
+| `Psi''' = Psi3` | `FoldDifferentiationCore.hasDerivAt_Psi2` | **Checked as the third derivative step.** |
+| Lean derivative identities | `deriv_Psi_eq_Psi1`, `deriv_Psi1_eq_Psi2`, `deriv_Psi2_eq_Psi3` | **Checked.** |
+| Fold substitution and nondegeneracy | declarations in `Fold.lean` | **Previously checked algebraically; now based on verified derivatives.** |
+
+This closes the elementary differentiation input formerly labeled
+`[BB-DIFF]`. It does not formalize the subsequent oscillatory-integral
+or van der Corput estimates.
+
 ## Fourier foundations
 
 The relevant modules under `DGBOZK/Foundations` are now imported transitively

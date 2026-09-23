@@ -18,15 +18,17 @@ and the lemma asserts the two identities
 
 together with the nondegeneracy `Ψ'''|_{Γ⁺_α} = t α(α+1)(α+2) ξ^{α−2} ≠ 0`.
 
-## What is black-boxed
+## Verification status
 
-`[BB-DIFF]`: the elementary derivative formulas
+`FoldDifferentiationCore.lean` introduces the explicit first derivative
+`Psi1` and proves, on `xi > 0` and `t != 0`, the genuine derivative chain
 
-  `Ψ''(ξ)  = t α(α+1) ξ^{α−1} − y²/(2tξ³)`,
-  `Ψ'''(ξ) = t α(α+1)(α−1) ξ^{α−2} + 3y²/(2tξ⁴)`,
+  `Psi  -->  Psi1  -->  Psi2  -->  Psi3`.
 
-which the paper obtains by differentiating `Ψ` twice and three times.  These are
-introduced as definitions.
+Consequently, the displayed formulas for `Psi2` and `Psi3` are no longer
+differentiation black boxes. The restrictions are exactly those already
+used in the reduced-phase calculation: positivity of the longitudinal
+frequency and nonvanishing time.
 
 ## What is proved
 
@@ -55,11 +57,11 @@ variable {α x y t ξ ηs : ℝ}
 /-- `Ψ(ξ) = xξ + tξ^{α+1} − y²/(4tξ)`, the reduced phase of `lem:fold`. -/
 noncomputable def Psi (α x y t ξ : ℝ) : ℝ := x * ξ + t * ξ ^ (α + 1) - y ^ 2 / (4 * t * ξ)
 
-/-- `Ψ''(ξ) = tα(α+1)ξ^{α−1} − y²/(2tξ³)`.  **[BB-DIFF]** -/
+/-- `Ψ''(ξ) = tα(α+1)ξ^{α−1} − y²/(2tξ³)`.   -/
 noncomputable def Psi2 (α y t ξ : ℝ) : ℝ :=
   t * (α * (α + 1)) * ξ ^ (α - 1) - y ^ 2 / (2 * t * ξ ^ 3)
 
-/-- `Ψ'''(ξ) = tα(α+1)(α−1)ξ^{α−2} + 3y²/(2tξ⁴)`.  **[BB-DIFF]** -/
+/-- `Ψ'''(ξ) = tα(α+1)(α−1)ξ^{α−2} + 3y²/(2tξ⁴)`.   -/
 noncomputable def Psi3 (α y t ξ : ℝ) : ℝ :=
   t * (α * (α + 1) * (α - 1)) * ξ ^ (α - 2) + 3 * y ^ 2 / (2 * t * ξ ^ 4)
 
