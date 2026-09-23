@@ -72,6 +72,46 @@ theorem localized_exp_hasSum (χ F : A) (t : ℂ) :
       (χ * NormedSpace.exp ℂ (t • F)) := by
   exact (NormedSpace.exp_series_hasSum_exp' (𝕂 := ℂ) (t • F)).mul_left χ
 
+theorem norm_localized_exp_le (χ F : A) (t : ℂ) :
+    ‖χ * NormedSpace.exp ℂ (t • F)‖ ≤
+      ‖χ‖ * Real.exp ‖t • F‖ := by
+  have hreal :
+      HasSum
+        (fun n : ℕ => (n.factorial : ℝ)⁻¹ * ‖t • F‖ ^ n)
+        (Real.exp ‖t • F‖) := by
+    rw [Real.exp_eq_exp_ℝ]
+    simpa only [smul_eq_mul] using
+      (NormedSpace.exp_series_hasSum_exp' (𝕂 := ℝ) ‖t • F‖)
+  have hbound (n : ℕ) :
+      ‖χ * ((n.factorial : ℂ)⁻¹ • (t • F) ^ n)‖ ≤
+        ‖χ‖ * ((n.factorial : ℝ)⁻¹ * ‖t • F‖ ^ n) := by
+    rw [mul_smul_comm]
+    calc
+      ‖(n.factorial : ℂ)⁻¹ • (χ * (t • F) ^ n)‖
+          ≤ ‖(n.factorial : ℂ)⁻¹‖ *
+              (‖χ‖ * ‖t • F‖ ^ n) :=
+        norm_scalar_cutoff_mul_power_le
+          χ (t • F) (n.factorial : ℂ)⁻¹ n
+      _ = ‖χ‖ * ((n.factorial : ℝ)⁻¹ * ‖t • F‖ ^ n) := by
+        simp [mul_left_comm]
+  exact
+    (localized_exp_hasSum χ F t).norm_le_of_bounded
+      (hreal.mul_left ‖χ‖) hbound
+
+
+/-- Quantitative bound for the localized exponential in an abstract
+complex Banach algebra. -/
+theorem norm_localized_exp_le_exp_norm (χ F : A) (t : ℂ) :
+    ‖χ * NormedSpace.exp ℂ (t • F)‖ ≤
+      ‖χ‖ * Real.exp (‖t‖ * ‖F‖) := by
+  calc
+    ‖χ * NormedSpace.exp ℂ (t • F)‖
+        ≤ ‖χ‖ * Real.exp ‖t • F‖ :=
+      norm_localized_exp_le χ F t
+    _ ≤ ‖χ‖ * Real.exp (‖t‖ * ‖F‖) :=
+      mul_le_mul_of_nonneg_left
+        (Real.exp_le_exp.mpr (norm_smul_le t F)) (norm_nonneg χ)
+
 end InfiniteExponential
 
 

@@ -231,5 +231,7 @@ open DGBOZK
 #print axioms DGBOZK.WienerPhaseAlgebraCore.norm_finite_localized_phase_le
 
 #print axioms DGBOZK.WienerPhaseAlgebraCore.localized_exp_hasSum
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_localized_exp_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_localized_exp_le_exp_norm
 
 #print axioms DGBOZK.WienerPhaseAlgebraCore.hasDerivAt_localized_exp
