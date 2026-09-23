@@ -19,7 +19,7 @@ proof of the local-well-posedness theorem.
 | Manuscript component | Representative Lean declarations | Status and exact scope |
 |---|---|---|
 | Phase geometry | `exchange_of_degeneracies`, `hessDet_eq_det`, `velX_defocusing_pos`, `hessDet_focusing_neg` | **Checked.** Displayed derivative formulas are encoded as definitions; Lean checks their consequences, not differentiation of the original phase. |
-| Fold calculation | `Psi2_eq_hessDet`, `Psi3_on_gamma_plus`, `Psi3_ne_zero_on_gamma_plus`, `Psi3_lower_bound` | **Checked** from the encoded formulas and stated side conditions. Oscillatory-integral estimates remain outside Lean. |
+| Fold calculation | `FoldDifferentiationCore.hasDerivAt_Psi`, `FoldDifferentiationCore.hasDerivAt_Psi1`, `FoldDifferentiationCore.hasDerivAt_Psi2`, `Psi2_eq_hessDet`, `Psi3_on_gamma_plus`, `Psi3_ne_zero_on_gamma_plus`, `Psi3_lower_bound` | **Checked from genuine derivatives.** The reduced-phase derivative chain, substitution identities, and fold nondegeneracy are verified. Oscillatory-integral estimates remain outside Lean. |
 | Focusing velocity | `velocity_lower_bound`, `velocity_sharp` | **Checked** as scalar frequency calculations. |
 | Exponents and thresholds | `R1_sub_R0`, `R1_sub_Kfold`, `Kfold_lt_R1`, `rPlus_lt_rRV`, `lifespanExp_one`, `scalingExp_rCrit`, `algebra_margin_on_range` | **Checked.** This does not formalize the PDE scaling map or lifespan construction. |
 | Localized cubic cancellation | `Cancellation.flow_symbol_identity`, `Cancellation.transverse_flow_identity`, `Cancellation.paper_identity_forces`, `Cancellation.residual_term_unlisted` | **Checked** in a commutative-ring Fourier-symbol model. Multiplier bounds, integrations by parts, and weighted estimates remain outside Lean. |
