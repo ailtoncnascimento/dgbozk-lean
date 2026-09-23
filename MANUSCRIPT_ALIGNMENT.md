@@ -2,8 +2,8 @@
 
 Target manuscript:
 
-    dgbozk_nonlinear_analysis_clean.tex
-    SHA-256 9a0920d31a4ce57d8d78dc046b727ac27b892ae8fbe4c82de60b0b70c7e2b1a0
+    dgbozk_nonlinear_analysis_clean_revised.tex
+    SHA-256 896c083639f17de5106afcd5e15656a44515ee249973f034870ce39e8b99d7ac
 
 ## Scope
 
@@ -18,10 +18,13 @@ proof of the local-well-posedness theorem.
 
 | Manuscript component | Representative Lean declarations | Status and exact scope |
 |---|---|---|
-| Phase geometry | `exchange_of_degeneracies`, `hessDet_eq_det`, `velX_defocusing_pos`, `hessDet_focusing_neg` | **Checked.** Displayed derivative formulas are encoded as definitions; Lean checks their consequences, not differentiation of the original phase. |
+| Phase geometry | `exchange_of_degeneracies`, `hessDet_eq_det`, `velX_defocusing_pos`, `hessDet_focusing_neg` | **Checked.** The reported scalar formulas are checked; the full symbolic phase and its derivatives are not all linked in one theorem. |
 | Fold calculation | `FoldDifferentiationCore.hasDerivAt_Psi`, `FoldDifferentiationCore.hasDerivAt_Psi1`, `FoldDifferentiationCore.hasDerivAt_Psi2`, `Psi2_eq_hessDet`, `Psi3_on_gamma_plus`, `Psi3_ne_zero_on_gamma_plus`, `Psi3_lower_bound` | **Checked from genuine derivatives.** The reduced-phase derivative chain, substitution identities, and fold nondegeneracy are verified. Oscillatory-integral estimates remain outside Lean. |
 | Focusing velocity | `velocity_lower_bound`, `velocity_sharp` | **Checked** as scalar frequency calculations. |
 | Exponents and thresholds | `R1_sub_R0`, `R1_sub_Kfold`, `Kfold_lt_R1`, `rPlus_lt_rRV`, `lifespanExp_one`, `scalingExp_rCrit`, `algebra_margin_on_range` | **Checked.** This does not formalize the PDE scaling map or lifespan construction. |
+| Critical fold and residual exponents | `ExponentCritical.fold_block_exponent`, `ExponentCritical.residual_admissible_iff` | **Checked as scalar identities.** The mixed maximal estimate and analytic residual bounds remain outside Lean. |
+| Focusing threshold audit | `ConditionalFocusing.inputs_iff`, `ConditionalFocusing.inputs_with_tau_gt_one_iff` | **Conditional.** Given the named exponent-level inputs, these theorems show exactly how the normalization `tau > 1` changes the stated threshold. No PDE estimate follows from these statements alone. |
+| Composed cancellation sign | `ComposedCancellation.composed_cancellation`, `ComposedCancellation.wrong_sign_doubles` | **Checked at the polynomial-symbol level.** Full operator and weighted error estimates remain outside Lean. |
 | Localized cubic cancellation | `Cancellation.flow_symbol_identity`, `Cancellation.transverse_flow_identity`, `Cancellation.paper_identity_forces`, `Cancellation.residual_term_unlisted` | **Checked** in a commutative-ring Fourier-symbol model. Multiplier bounds, integrations by parts, and weighted estimates remain outside Lean. |
 | Positive-commutator signs | `PositiveCommutatorCore.transverse_commutator_symbol`, `PositiveCommutatorCore.longitudinal_double_negative`, `PositiveCommutatorCore.longitudinal_commutator_kernel_sign` | **Checked.** |
 | Two-component parametrix algebra | `PositiveCommutatorCore.parametrix_numerator_identity`, `PositiveCommutatorCore.two_component_parametrix_identity` | **Checked** from an explicit inverse-symbol hypothesis. |

@@ -23,7 +23,7 @@ namespace DyadicFiniteSumBoundCore
 
 section FiniteSum
 
-variable {ι : Type*} [DecidableEq ι]
+variable {ι : Type*}
 
 /--
 A finite sum is bounded by the cardinality times a common pointwise bound.

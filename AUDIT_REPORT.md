@@ -2,6 +2,10 @@
 
 Date: 9 September 2026
 
+Historical report for the manuscript SHA listed below. For the 23 September
+revision and the added critical-point modules, consult
+`MANUSCRIPT_ALIGNMENT.md` and `README.md`.
+
 ## Conclusion
 
 This revision aligns the default Lean target with the cleaned manuscript

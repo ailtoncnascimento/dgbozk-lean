@@ -3,9 +3,10 @@
 Targeted Lean 4 checks accompanying A. C. Nascimento, Local well-posedness for
 two-sign dispersion-generalized Benjamin--Ono--Zakharov--Kuznetsov equations.
 
-The current validation target is the cleaned manuscript whose SHA-256 is
+The current alignment target is `dgbozk_nonlinear_analysis_clean_revised.tex`,
+whose SHA-256 is
 
-    9a0920d31a4ce57d8d78dc046b727ac27b892ae8fbe4c82de60b0b70c7e2b1a0
+    896c083639f17de5106afcd5e15656a44515ee249973f034870ce39e8b99d7ac
 
 The project is pinned to Lean 4.22.0 and Mathlib 4.22.0.
 
@@ -26,10 +27,15 @@ the local-well-posedness theorem.  The default DGBOZK target machine-checks:
    its endpoint values, and the existence of the intermediate exponents used
    after the direct transition estimate; and
 7. the final scalar absorption implication for a quadratic frequency-envelope
-   system.
+   system;
+8. the fold exponent identity (`eq:magic`) and finite residual classification;
+9. the sign composition of the localized cubic correction; and
+10. conditional focusing exponent closure with and without the additional
+    normalization `tau > 1`.
 
 The source contains no sorry, admit, or project-level axiom declaration.
-Audit.lean prints the axiom dependencies of the headline results.
+Audit.lean prints the axiom dependencies of the headline results, and
+`scripts/check_axiom_report.py` enforces the standard-axiom allowlist in CI.
 
 ## What remains outside Lean
 
@@ -84,9 +90,9 @@ Resonance.lean is retained for historical comparison with an earlier
 normal-form draft.  It is deliberately not imported by the default target and
 is not part of the validation claim for the cleaned manuscript.
 
-The Foundations directory contains preliminary Fourier-convention work.  It is
-not yet an anisotropic Littlewood--Paley formalization and is not imported by
-the default target.
+The Foundations directory contains preliminary Fourier-convention and finite
+dyadic calculations. Several modules are imported by the default target; these
+do not constitute a full anisotropic Littlewood--Paley formalization.
 
 ## Reproducible verification
 

@@ -7,10 +7,9 @@ in the library.
 
 Each result must depend on at most the standard allowlist
 `propext`, `Classical.choice`, `Quot.sound`; many algebraic results use a strict
-subset or no axioms at all.  This file is a human-readable report.  Printing the
-dependencies does not by itself make CI fail, so the GitHub workflow also runs
-the enforced axiom audit supplied by `leanprover/lean-action` and an independent
-`nanoda` check with `sorryAx` forbidden.
+subset or no axioms at all.  `scripts/check_axiom_report.py` checks every
+printed declaration against this list and fails CI if a report is missing or
+contains another axiom.
 
 Hypotheses such as `hTaylor` and `hR` are inputs to theorem statements, not
 axioms, and therefore do not appear in `#print axioms`.  Their mathematical
@@ -23,6 +22,14 @@ import DGBOZK
 set_option autoImplicit false
 
 open DGBOZK
+
+/-! ## Critical exponent and cancellation proposals -/
+#print axioms DGBOZK.ExponentCritical.fold_block_exponent
+#print axioms DGBOZK.ExponentCritical.residual_admissible_iff
+#print axioms DGBOZK.ConditionalFocusing.inputs_iff
+#print axioms DGBOZK.ConditionalFocusing.inputs_with_tau_gt_one_iff
+#print axioms DGBOZK.ComposedCancellation.composed_cancellation
+#print axioms DGBOZK.ComposedCancellation.wrong_sign_doubles
 
 /-! ## §3  Phase geometry -/
 #print axioms DGBOZK.exchange_of_degeneracies

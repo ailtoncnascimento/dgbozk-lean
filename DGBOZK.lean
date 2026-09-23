@@ -12,6 +12,8 @@ normal-form resonance module while retaining the analytic Fourier estimates in t
 -/
 import DGBOZK.BlackBoxes
 import DGBOZK.Exponents
+import DGBOZK.ExponentCriticalPoints
+import DGBOZK.ConditionalFocusingClosure
 import DGBOZK.Phase
 import DGBOZK.PhaseTransverseDifferentiationCore
 import DGBOZK.PhaseLongitudinalDifferentiationCore
@@ -21,6 +23,7 @@ import DGBOZK.Velocity
 import DGBOZK.Cancellation
 import DGBOZK.TrilinearCancellationCore
 import DGBOZK.TrilinearDifferentiationCore
+import DGBOZK.ComposedCancellationSign
 import DGBOZK.GaugeUpperEquivalenceCore
 import DGBOZK.GaugeUniquenessCore
 import DGBOZK.GaugeExistenceCore
