@@ -112,6 +112,28 @@ theorem norm_localized_exp_le_exp_norm (χ F : A) (t : ℂ) :
       mul_le_mul_of_nonneg_left
         (Real.exp_le_exp.mpr (norm_smul_le t F)) (norm_nonneg χ)
 
+theorem norm_localized_real_phase_le (χ F : A) (t : ℝ) :
+    ‖χ * NormedSpace.exp ℂ ((-Complex.I * (t : ℂ)) • F)‖ ≤
+      ‖χ‖ * Real.exp (|t| * ‖F‖) := by
+  have hnorm : ‖(-Complex.I * (t : ℂ))‖ = |t| := by
+    simp
+  simpa only [hnorm] using
+    (norm_localized_exp_le_exp_norm
+      χ F (-Complex.I * (t : ℂ)))
+
+theorem norm_localized_real_phase_times_F_le (χ F : A) (t : ℝ) :
+    ‖χ * (NormedSpace.exp ℂ ((-Complex.I * (t : ℂ)) • F) * F)‖ ≤
+      ‖χ‖ * ‖F‖ * Real.exp (|t| * ‖F‖) := by
+  calc
+    ‖χ * (NormedSpace.exp ℂ ((-Complex.I * (t : ℂ)) • F) * F)‖
+        = ‖(χ * NormedSpace.exp ℂ ((-Complex.I * (t : ℂ)) • F)) * F‖ := by
+          rw [mul_assoc]
+    _ ≤ ‖χ * NormedSpace.exp ℂ ((-Complex.I * (t : ℂ)) • F)‖ * ‖F‖ :=
+      norm_mul_le _ _
+    _ ≤ (‖χ‖ * Real.exp (|t| * ‖F‖)) * ‖F‖ :=
+      mul_le_mul_of_nonneg_right (norm_localized_real_phase_le χ F t) (norm_nonneg F)
+    _ = ‖χ‖ * ‖F‖ * Real.exp (|t| * ‖F‖) := by ring
+
 end InfiniteExponential
 
 

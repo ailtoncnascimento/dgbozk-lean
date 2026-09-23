@@ -5,7 +5,7 @@
 This document records the analytic audit of the Wiener-algebra arguments used
 in the cleaned DGBOZK manuscript. It is not a Lean proof of those arguments.
 
-`DGBOZK/WienerPhaseAlgebraCore.lean` proves finite coefficient bounds, sums the localized exponential series, bounds its norm by `‖χ‖ * Real.exp (‖t‖ * ‖F‖)`, and proves its complex-time derivative in an abstract complex Banach algebra. The concrete Wiener algebra and its unitization, Wiener membership of the cutoff and fractional phase, and the time-maximal inverse-Fourier kernel estimate are not yet machine-checked.
+`DGBOZK/WienerPhaseAlgebraCore.lean` proves finite coefficient bounds, the localized exponential series, its quantitative norm bound, and the norm bounds for the real-time phase `-itF` and its phase-times-`F` factor in an abstract complex Banach algebra. It proves a complex-time derivative; the corresponding real-time derivative, concrete Wiener membership, and time-maximal inverse-Fourier kernel estimate remain outside Lean.
 
 The Lean library verifies the exact sign and algebraic identities surrounding
 the localized positive commutator in:
