@@ -13,6 +13,7 @@ normal-form resonance module while retaining the analytic Fourier estimates in t
 import DGBOZK.BlackBoxes
 import DGBOZK.Exponents
 import DGBOZK.ExponentCriticalPoints
+import DGBOZK.WienerPhaseAlgebraCore
 import DGBOZK.ConditionalFocusingClosure
 import DGBOZK.Phase
 import DGBOZK.PhaseTransverseDifferentiationCore

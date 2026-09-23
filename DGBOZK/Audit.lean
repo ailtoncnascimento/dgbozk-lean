@@ -224,3 +224,12 @@ open DGBOZK
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi_eq_Psi1
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi1_eq_Psi2
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi2_eq_Psi3
+
+/-! ## Finite Wiener-phase algebraic bound; full lemma remains open -/
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_cutoff_mul_power_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_scalar_cutoff_mul_power_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_finite_localized_phase_le
+
+#print axioms DGBOZK.WienerPhaseAlgebraCore.localized_exp_hasSum
+
+#print axioms DGBOZK.WienerPhaseAlgebraCore.hasDerivAt_localized_exp
