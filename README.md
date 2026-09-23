@@ -3,10 +3,11 @@
 Targeted Lean 4 checks accompanying A. C. Nascimento, Local well-posedness for
 two-sign dispersion-generalized Benjamin--Ono--Zakharov--Kuznetsov equations.
 
-The current alignment target is `dgbozk_nonlinear_analysis_clean_revised.tex`,
-whose SHA-256 is
-
-    896c083639f17de5106afcd5e15656a44515ee249973f034870ce39e8b99d7ac
+The alignment target is the 23 September 2026 revision of
+`dgbozk_nonlinear_analysis_clean_revised.tex`.  Alignment concerns the
+mathematical statements listed in `MANUSCRIPT_ALIGNMENT.md`.  Its file hash is
+not pinned here: the manuscript cites an immutable repository commit in its
+data-availability statement, so inserting that commit changes the file hash.
 
 The project is pinned to Lean 4.22.0 and Mathlib 4.22.0.
 

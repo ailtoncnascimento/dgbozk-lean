@@ -3,7 +3,11 @@
 Target manuscript:
 
     dgbozk_nonlinear_analysis_clean_revised.tex
-    SHA-256 896c083639f17de5106afcd5e15656a44515ee249973f034870ce39e8b99d7ac
+
+Revision: 23 September 2026.  The alignment below concerns the labeled
+mathematical statements.  A whole-file SHA-256 is not pinned here, because
+updating the manuscript's citation to the final repository commit changes the
+manuscript bytes without changing any of the formalized statements.
 
 ## Scope
 
