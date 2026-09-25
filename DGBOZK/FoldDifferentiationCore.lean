@@ -235,9 +235,7 @@ theorem hasDerivAt_Psi1
           xiVariable ^ (2 : ℕ))
         (2 * xi)
         xi := by
-       convert
-      (hasDerivAt_id xi).pow 2
-      using 1
+    convert (hasDerivAt_id xi).pow 2 using 1
     norm_num
 
   have hDenominator :
@@ -351,9 +349,7 @@ theorem hasDerivAt_Psi2
           xiVariable ^ (3 : ℕ))
         (3 * xi ^ (2 : ℕ))
         xi := by
-       convert
-      (hasDerivAt_id xi).pow 3
-      using 1
+    convert (hasDerivAt_id xi).pow 3 using 1
     norm_num
 
   have hDenominator :

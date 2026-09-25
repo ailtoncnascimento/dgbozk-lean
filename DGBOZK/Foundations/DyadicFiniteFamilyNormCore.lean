@@ -32,7 +32,6 @@ open DyadicInteractionBoundCore
 section AbstractFamily
 
 variable {ι E : Type*}
-variable [DecidableEq ι]
 variable [SeminormedAddCommGroup E]
 
 /--
