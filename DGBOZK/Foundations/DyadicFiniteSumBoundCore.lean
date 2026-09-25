@@ -25,6 +25,7 @@ section FiniteSum
 
 variable {ι : Type*} [DecidableEq ι]
 
+omit [DecidableEq ι] in
 /--
 A finite sum is bounded by the cardinality times a common pointwise bound.
 No positivity assumption on the summands is required.

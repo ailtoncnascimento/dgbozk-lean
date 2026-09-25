@@ -43,7 +43,7 @@ The anisotropic energy is positive away from the origin.
 -/
 theorem anisotropicEnergy_pos
     {alpha xi eta : ℝ}
-    (halpha : 0 < alpha)
+      (_halpha : 0 < alpha)
     (hnonzero : ¬(xi = 0 ∧ eta = 0)) :
     0 < anisotropicEnergy alpha xi eta := by
   have hxNonneg :
@@ -137,7 +137,7 @@ At the lower endpoint `E / 2`, the defining left side is at least one.
 theorem one_le_gaugeLeftSide_half_energy
     {alpha xi eta : ℝ}
     (halphaOne : 1 ≤ alpha)
-    (halphaTwo : alpha ≤ 2)
+       (_halphaTwo : alpha ≤ 2)
     (hnonzero : ¬(xi = 0 ∧ eta = 0)) :
     1 ≤
       gaugeLeftSide alpha xi eta
