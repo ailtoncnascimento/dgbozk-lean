@@ -44,5 +44,6 @@ import DGBOZK.Foundations.DyadicActiveCardinalityCore
 import DGBOZK.Foundations.DyadicFiniteSumBoundCore
 import DGBOZK.Foundations.DyadicInteractionBoundCore
 import DGBOZK.Foundations.DyadicFiniteFamilyNormCore
+import DGBOZK.Foundations.WienerAlgebraCore
 
 set_option autoImplicit false
