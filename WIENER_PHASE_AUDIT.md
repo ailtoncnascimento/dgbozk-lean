@@ -3,7 +3,18 @@
 ## Scope
 
 This document records the analytic audit of the Wiener-algebra arguments used
-in the cleaned DGBOZK manuscript. It is not a Lean proof of those arguments.
+in the cleaned DGBOZK manuscript.
+
+**Update.** `lem:wiener` (with both bounds of `eq:wiener-average`) and the two
+Wiener-norm bounds of `lem:wiener-phase` are now proved in Lean, without
+hypotheses, in `DGBOZK/Foundations/WienerAlgebraCore.lean`: see
+`inWiener_abs_rpow_mul_schwartz`, `inWiener_mul_abs_rpow_mul_schwartz`,
+`wienerAverage_uniform`, `wienerAverage_integral`, `IsWienerKernel.mul`,
+`IsWienerKernel.exp_mul`, `hasDerivAt_wienerPhase` and `wienerPhase`.  The
+derivative bound is proved uniformly in `|t| <= 1`, which implies the integral
+bound.  The maximal-function consequence
+`∫ sup_{|t|<=1} |k_t(x)| dx < ∞` derived below, and `eq:D-wiener`, remain
+outside Lean.
 
 The Lean library verifies the exact sign and algebraic identities surrounding
 the localized positive commutator in:
