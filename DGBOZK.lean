@@ -11,6 +11,9 @@ trust boundary.  This default target deliberately excludes the legacy
 normal-form resonance module while retaining the analytic Fourier estimates in the documented trust boundary.
 -/
 import DGBOZK.BlackBoxes
+import DGBOZK.ExponentCriticalPoints
+import DGBOZK.WienerPhaseAlgebraCore
+import DGBOZK.ConditionalFocusingClosure
 import DGBOZK.Exponents
 import DGBOZK.Phase
 import DGBOZK.PhaseTransverseDifferentiationCore
@@ -21,6 +24,7 @@ import DGBOZK.Velocity
 import DGBOZK.Cancellation
 import DGBOZK.TrilinearCancellationCore
 import DGBOZK.TrilinearDifferentiationCore
+import DGBOZK.ComposedCancellationSign
 import DGBOZK.GaugeUpperEquivalenceCore
 import DGBOZK.GaugeUniquenessCore
 import DGBOZK.GaugeExistenceCore

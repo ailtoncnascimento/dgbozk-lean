@@ -7,10 +7,9 @@ in the library.
 
 Each result must depend on at most the standard allowlist
 `propext`, `Classical.choice`, `Quot.sound`; many algebraic results use a strict
-subset or no axioms at all.  This file is a human-readable report.  Printing the
-dependencies does not by itself make CI fail, so the GitHub workflow also runs
-the enforced axiom audit supplied by `leanprover/lean-action` and an independent
-`nanoda` check with `sorryAx` forbidden.
+subset or no axioms at all.  `scripts/check_axiom_report.py` checks every
+printed declaration against this list and fails CI if a report is missing or
+contains another axiom.
 
 Hypotheses such as `hTaylor` and `hR` are inputs to theorem statements, not
 axioms, and therefore do not appear in `#print axioms`.  Their mathematical
@@ -23,6 +22,14 @@ import DGBOZK
 set_option autoImplicit false
 
 open DGBOZK
+
+/-! ## Critical exponent and cancellation proposals -/
+#print axioms DGBOZK.ExponentCritical.fold_block_exponent
+#print axioms DGBOZK.ExponentCritical.residual_admissible_iff
+#print axioms DGBOZK.ConditionalFocusing.inputs_iff
+#print axioms DGBOZK.ConditionalFocusing.inputs_with_tau_gt_one_iff
+#print axioms DGBOZK.ComposedCancellation.composed_cancellation
+#print axioms DGBOZK.ComposedCancellation.wrong_sign_doubles
 
 /-! ## §3  Phase geometry -/
 #print axioms DGBOZK.exchange_of_degeneracies
@@ -217,6 +224,19 @@ open DGBOZK
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi_eq_Psi1
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi1_eq_Psi2
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi2_eq_Psi3
+
+/-! ## Abstract Banach-algebra exponential bounds (the concrete lemma is in `WienerAlgebraCore`) -/
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_cutoff_mul_power_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_scalar_cutoff_mul_power_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_finite_localized_phase_le
+
+#print axioms DGBOZK.WienerPhaseAlgebraCore.localized_exp_hasSum
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_localized_exp_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_localized_exp_le_exp_norm
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_localized_real_phase_le
+#print axioms DGBOZK.WienerPhaseAlgebraCore.norm_localized_real_phase_times_F_le
+
+#print axioms DGBOZK.WienerPhaseAlgebraCore.hasDerivAt_localized_exp
 
 /-! ## Wiener algebra: `lem:wiener`, `eq:wiener-average`, `lem:wiener-phase` -/
 #print axioms DGBOZK.Foundations.WienerAlgebraCore.inWiener_abs_rpow_mul_schwartz
