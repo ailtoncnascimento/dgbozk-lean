@@ -24,4 +24,4 @@ if grep -q '^import DGBOZK.Resonance' DGBOZK.lean; then
 fi
 
 lake build --wfail
-lake env lean DGBOZK/Audit.lean
+lake env lean DGBOZK/Audit.lean | python3 scripts/check_axiom_report.py DGBOZK/Audit.lean
