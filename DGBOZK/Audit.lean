@@ -217,3 +217,13 @@ open DGBOZK
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi_eq_Psi1
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi1_eq_Psi2
 #print axioms DGBOZK.FoldDifferentiationCore.deriv_Psi2_eq_Psi3
+
+/-! ## Wiener algebra: `lem:wiener`, `eq:wiener-average`, `lem:wiener-phase` -/
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.inWiener_abs_rpow_mul_schwartz
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.inWiener_mul_abs_rpow_mul_schwartz
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.wienerAverage_uniform
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.wienerAverage_integral
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.IsWienerKernel.mul
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.IsWienerKernel.exp_mul
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.hasDerivAt_wienerPhase
+#print axioms DGBOZK.Foundations.WienerAlgebraCore.wienerPhase

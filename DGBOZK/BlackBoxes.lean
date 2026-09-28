@@ -88,6 +88,11 @@ of the error kernel, or the integrations by parts. The separate file
 `WIENER_PHASE_AUDIT.md` records the mathematical audit of these analytic
 interfaces.
 
+The Wiener-algebra lemmas `lem:wiener` (including `eq:wiener-average`) and
+`lem:wiener-phase` are proved without hypotheses in
+`DGBOZK/Foundations/WienerAlgebraCore.lean`; they are no longer part of the
+trust boundary.
+
 ## Frequency envelopes
 
 The finite envelope calculation, the maximizing-block argument, and the
@@ -264,7 +269,8 @@ The following parts of the cleaned manuscript remain outside Lean:
 * oscillatory-integral and van der Corput estimates;
 * the TT-star argument and mixed maximal-function estimates;
 * bilinear multiplier and weighted paraproduct estimates;
-* the analytic Wiener estimates used in the positive commutator;
+* the analytic Wiener estimate `eq:D-wiener` used in the positive commutator
+  (the lemmas `lem:wiener` and `lem:wiener-phase` are formalized);
 * weighted positive-commutator, sharp-Garding, and coercivity estimates;
 * the direct focusing transition estimate;
 * refined short-time Strichartz and microlocal smoothing estimates;

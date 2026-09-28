@@ -27,6 +27,10 @@ the local-well-posedness theorem.  The default DGBOZK target machine-checks:
    after the direct transition estimate; and
 7. the final scalar absorption implication for a quadratic frequency-envelope
    system.
+8. the Wiener-algebra lemmas `lem:wiener` and `lem:wiener-phase`, including
+   both bounds of `eq:wiener-average` and a bound on the `t`-derivative that is
+   uniform in `|t| <= 1` (DGBOZK/Foundations/WienerAlgebraCore.lean).  These
+   are proved from Mathlib alone, without hypotheses.
 
 The source contains no sorry, admit, or project-level axiom declaration.
 Audit.lean prints the axiom dependencies of the headline results.
@@ -84,9 +88,9 @@ Resonance.lean is retained for historical comparison with an earlier
 normal-form draft.  It is deliberately not imported by the default target and
 is not part of the validation claim for the cleaned manuscript.
 
-The Foundations directory contains preliminary Fourier-convention work.  It is
-not yet an anisotropic Littlewood--Paley formalization and is not imported by
-the default target.
+The Foundations directory contains Fourier-convention and dyadic work, and
+the Wiener-algebra module WienerAlgebraCore.lean.  It is not an anisotropic
+Littlewood--Paley formalization.
 
 ## Reproducible verification
 
@@ -114,8 +118,9 @@ the same commit SHA.
 
 ## Suggested disclosure
 
-Selected sign-, polynomial-, and exponent-sensitive calculations were checked
-in Lean 4.  The artifact does not formalize the harmonic-analysis estimates or
+Selected sign-, polynomial-, and exponent-sensitive calculations, and the
+Wiener-algebra lemmas lem:wiener and lem:wiener-phase, were checked in Lean 4.
+The artifact does not formalize the remaining harmonic-analysis estimates or
 the local-well-posedness theorem; those arguments remain subject to conventional
 mathematical review.
 
